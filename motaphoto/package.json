@@ -1,0 +1,17 @@
+{
+  "name": "motaphoto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass ../motaphoto/sass/styles.scss:../motaphoto/css/styles.css",
+    "start": "nodemon -e scss -x \"npm run compile:sass\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "sass": "^1.69.7"
+  }
+}
