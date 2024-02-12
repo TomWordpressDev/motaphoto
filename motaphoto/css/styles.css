@@ -1,5 +1,177 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/*Modale*/
+.modal {
+  display: block; /* Afficher la modale par défaut */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.contact-image {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenu de la modale */
+.modal-content {
+  margin: 15% auto;
+  width: 37.3125rem;
+  height: 48.0625rem;
+  position: relative;
+  border: 5px solid #000;
+  background: #FFF;
+}
+
+/* Bouton de fermeture */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Formulaire */
+.modal-content form {
+  margin-top: 10.62rem;
+  margin-left: 10.31rem;
+}
+
+.modal-content label {
+  color: #313144;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.modal-content input {
+  width: 16.4375rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #B8BBC2;
+  background: #FFF;
+}
+
+.modal-content textarea {
+  width: 16.4375rem;
+  height: 13.125rem;
+  border-radius: 0.5rem;
+  border: 1px solid #B8BBC2;
+  background: #FFF;
+  resize: none;
+}
+
+.wpcf7-form-control.wpcf7-submit.has-spinner {
+  display: flex;
+  width: 16.4375rem;
+  height: 3.125rem;
+  padding: 0.5rem 0.9375rem;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 0.125rem;
+  background: #D8D8D8;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+  color: #000;
+  font-family: "Space Mono";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 h1 {
   color: blue;
+}
+
+body {
+  margin: auto;
+  width: 100%;
+}
+
+header {
+  height: 5rem;
+  background: #FFF;
+  box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+}
+
+.menu-header {
+  position: relative;
+}
+
+.menu-header ul {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  right: 6.19rem;
+  gap: 2.81rem;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+}
+
+.menu-header ul a {
+  color: #000;
+  font-family: "Space Mono";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.logo {
+  position: absolute;
+  width: 216px;
+  height: 14px;
+  top: 1.94rem;
+  left: 146px;
+}
+
+/*Footer*/
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+.footer ul li {
+  margin: 0 3.38rem;
+  color: #000;
+  font-family: "Space Mono";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=styles.css.map */
