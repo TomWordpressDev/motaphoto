@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import 'modale';
+@import 'galerie';
 h1{
     color: blue;
 }
@@ -10,7 +11,7 @@ body{
     width: 100%;
 }
 
-header{    
+.header{    
  
     height: 5rem; 
     background: #FFF;
@@ -84,3 +85,13 @@ header{
 }
 
 
+.hero-header{    
+    width: 100%;
+}
+
+
+.hero-header img{
+    height: 60.125rem; 
+    object-fit: cover;
+    width: 100%;
+}

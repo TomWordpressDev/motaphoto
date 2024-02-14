@@ -9,9 +9,8 @@
     <title>Motaphoto</title>
 </head>
 <body>
-    <header>
-        <nav>    
-        
+    <header class="header">
+        <nav>            
   
         <img class="logo" src=<?php echo get_stylesheet_directory_uri() . '/assets/Logo.png'; ?> >
  
