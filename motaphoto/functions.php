@@ -157,9 +157,11 @@ function get_random_gallery_image_url() {
 
     if ($query->have_posts()) {
         $query->the_post();
-        return get_the_post_thumbnail_url(get_the_ID(), 'large');
+        return get_the_post_thumbnail_url(get_the_ID(), 'full');
     }
 
     // Si aucune image n'est trouvée, retourner une image de remplacement par défaut
     return get_stylesheet_directory_uri() . '/assets/header-image.png';
 }
+
+

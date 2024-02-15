@@ -7,9 +7,9 @@ $formats = get_terms('format');
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
-    <header class="hero-header">
-        <img class="header-image" src="<?php echo get_random_gallery_image_url(); ?>" >
-    </header>
+        <header class="hero-header">
+            <img class="header-image" src="<?php echo get_random_gallery_image_url(); ?>" >
+        </header>
 
         <div class="filters">
             <select id="categorie" class="filter">
@@ -61,7 +61,7 @@ $formats = get_terms('format');
                             $annee = get_post_meta(get_the_ID(), 'annee', true);
                             ?>
                             <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
-                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
+                                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full'); ?></a>
                                 <span class="annee"><?php echo $annee; ?></span>
                             </div>
                             <?php
@@ -87,6 +87,11 @@ $formats = get_terms('format');
 
 <script>
     jQuery(document).ready(function($) {
+        // Réinitialiser les valeurs par défaut des sélecteurs
+        $('#categorie').val('all');
+        $('#format').val('all');
+        $('#annee').val('');
+
         // Fonction pour filtrer les images
         function filtrerImages() {
             var categorie = $('#categorie').val();
@@ -106,6 +111,16 @@ $formats = get_terms('format');
                 },
                 success: function(response) {
                     $('.grid').html(response); // Ajoute les nouvelles images à la grille
+                    // Cacher le bouton "Charger plus" si aucune image supplémentaire n'est disponible
+                    if ($('.grid .item').length < 8) {
+                        $('#load-more').hide();
+                    } else {
+                        $('#load-more').show();
+                    }
+                    // Cacher le bouton si aucun résultat n'est retourné
+                    if (response.trim() == 'Aucune image trouvée.') {
+                        $('#load-more').hide();
+                    }
                 }
             });
         }
@@ -124,28 +139,33 @@ $formats = get_terms('format');
         $('#annee').on('change', function() {
             filtrerImages();
         });
-    });
-    jQuery(document).ready(function($) {
-    var offset = 8;
 
-    $('#load-more').on('click', function() {
-        $.ajax({
-            url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            type: 'POST',
-            data: {
-                action: 'load_more_images',
-                offset: offset,
-            },
-            success: function(response) {
-                if (response != '') {
-                    $('.grid').append(response);
-                    offset += 8;
-                } else {
-                    $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
+        var offset = 8;
+
+        $('#load-more').on('click', function() {
+            var categorie = $('#categorie').val();
+            var format = $('#format').val();
+            var annee = $('#annee').val();
+            
+            $.ajax({
+                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                type: 'POST',
+                data: {
+                    action: 'load_more_images',
+                    offset: offset,
+                    categorie: categorie,
+                    format: format,
+                    annee: annee
+                },
+                success: function(response) {
+                    if (response != '') {
+                        $('.grid').append(response);
+                        offset += 8;
+                    } else {
+                        $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
+                    }
                 }
-            }
+            });
         });
     });
-});
-
 </script>
