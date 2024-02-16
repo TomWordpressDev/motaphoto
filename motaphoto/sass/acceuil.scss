@@ -1,0 +1,149 @@
+
+.hero-header{    
+    width: 100%;
+}
+
+
+.hero-header img{
+    height: 60.125rem; 
+    object-fit: cover;
+    width: 100%;
+}
+
+
+
+/* Filtres */
+.filters-container{   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    margin-bottom: 2.44rem;
+    margin-top: 4.94rem;
+    margin-right: 9.12rem;
+    margin-left: 9.12rem;
+}
+
+.filters select{  
+    display: flex;
+    width: 16.25rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding: 0.6875rem 1.125rem;   
+    align-items: center;
+    align-self: stretch;
+    border-radius: 0.5rem;
+    border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
+    background: var(--White, #FFF);
+}
+
+#filter-format{
+    margin-right: 800px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
+    gap: 1.25rem; /* Espacement entre les éléments */
+    margin-left: auto; /* Centrer la grille horizontalement */
+    margin-right: auto; /* Centrer la grille horizontalement */
+    justify-content: center;
+    align-items: center; 
+    margin-right: 9.12rem;
+    margin-left: 9.12rem;
+}
+
+.item {
+    box-sizing: border-box; /* Pour inclure la marge dans la largeur */
+    width: auto;
+    height: 40.9375rem; 
+    position: relative; /* Pour positionner l'élément */
+    overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+}
+
+.item img {
+    width: 100%; /* Pour remplir complètement l'espace de l'élément */
+    height: 100%; /* Pour remplir complètement l'espace de l'élément */
+    object-fit: cover; /* Pour garder les proportions de l'image sans la déformer */
+    position: absolute; /* Pour positionner l'image */
+    top: 0; /* Positionner l'image en haut */
+    left: 0; /* Positionner l'image à gauche */
+}
+
+.annee {
+    display: none;
+
+}
+
+/*Bouton "Charger plus */
+#load-more {
+    display: flex;
+    width: 17rem;
+    height: 3.125rem;
+    padding: 0.5rem 0.9375rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 2.5rem !important; /* Espacement supplémentaire vers le haut */
+    margin-bottom: 2.5rem !important;
+    display: block; /* Assurez-vous que le bouton est affiché en tant que bloc pour qu'il occupe tout l'espace disponible horizontalement */
+    margin: 20px auto; /* Marge supérieure et inférieure de 20px, et marges gauche et droite automatiques pour centrer horizontalement */
+    border-radius: 0.125rem;
+    background: #D8D8D8;
+    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
+}
+
+@media screen and (max-width: 768px) {
+   
+    .hero-header{    
+        width: 100%;
+    }
+
+
+    .hero-header img{
+        height: auto; 
+        object-fit: cover;
+        width: 100%;
+    }
+
+   
+    
+    .filters-container{
+        margin-top: 20px !important;
+        margin-right: 1.81rem;
+        margin-left: 1.81rem;
+    }
+
+    .filters-container, #filter-format{   
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0;       
+    }
+
+    .filters select{
+        margin-bottom: 0.5rem; 
+    }
+   
+    .grid {
+        margin-top:20px ;
+        grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+        justify-content: center;
+        align-items: center;
+        margin-right: 1.81rem;
+        margin-left: 1.81rem;
+    }
+    .item {
+        display: flex;
+        box-sizing: border-box; /* Pour inclure la marge dans la largeur */
+        width: auto;
+        height: 35rem;
+        width: 100%; 
+        position: relative; /* Pour positionner l'élément */
+        overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+        justify-content: center;
+        align-items: center;
+    }
+}

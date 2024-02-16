@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import 'modale';
 @import 'galerie';
+@import 'acceuil';
 h1{
     color: blue;
 }
@@ -85,13 +86,3 @@ body{
 }
 
 
-.hero-header{    
-    width: 100%;
-}
-
-
-.hero-header img{
-    height: 60.125rem; 
-    object-fit: cover;
-    width: 100%;
-}
