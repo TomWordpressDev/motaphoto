@@ -6,9 +6,7 @@ function custom_theme_enqueue_scripts() {
     // Ajout du style personnalisé généré à partir de Sass, dépendant du style du thème parent
     wp_enqueue_style('custom-style', get_template_directory_uri() . '/css/styles.css', array('parent-style'), '1.0.0', 'all');
 
- 
     wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/custom-script.js', array('jquery'), '1.0.0', true);
-    
 }
 add_action('wp_enqueue_scripts', 'custom_theme_enqueue_scripts');
 
@@ -39,7 +37,7 @@ function filter_images() {
         'order' => ($annee == 'asc') ? 'ASC' : 'DESC' // Ordre défini par la sélection de l'utilisateur
     );
 
-    // Filtrage par catégorie
+    // Filtrage par catégorie si une catégorie est sélectionnée
     if ($categorie != 'all') {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -48,7 +46,7 @@ function filter_images() {
         );
     }
 
-    // Filtrage par format
+    // Filtrage par format si un format est sélectionné
     if ($format != 'all') {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
@@ -92,16 +90,16 @@ function load_more_images() {
     $format = isset($_POST['format']) ? $_POST['format'] : 'all';
     $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
 
+    // Préparation des arguments de la requête WP_Query
     $args = array(
         'post_type' => 'photos',
         'posts_per_page' => 8,
-        'offset' => $offset,
         'meta_key' => 'annee',
         'orderby' => 'meta_value_num',
         'order' => 'ASC'
     );
 
-    // Ajout des filtres à la requête
+    // Filtrage par catégorie si une catégorie est sélectionnée
     if ($categorie != 'all') {
         $args['tax_query'][] = array(
             'taxonomy' => 'categorie',
@@ -110,6 +108,7 @@ function load_more_images() {
         );
     }
 
+    // Filtrage par format si un format est sélectionné
     if ($format != 'all') {
         $args['tax_query'][] = array(
             'taxonomy' => 'format',
@@ -118,12 +117,35 @@ function load_more_images() {
         );
     }
 
+    // Filtrage par année si une année est sélectionnée
     if (!empty($annee)) {
         // Ajoutez votre logique pour le filtrage par année si nécessaire
     }
 
+    // Exécution de la requête WP_Query
     $query = new WP_Query($args);
 
+    // Comptage total des images
+    $total_images = $query->found_posts;
+
+    // Nouvel offset basé sur le nombre total d'images et l'offset précédent
+    $new_offset = $offset + 8;
+
+    // Vérifier si l'offset dépasse le nombre total d'images
+    if ($new_offset >= $total_images) {
+        $new_offset = $total_images; // Définir l'offset au nombre total d'images si dépassement
+    }
+
+    // Mettre à jour l'offset pour la prochaine requête
+    $_POST['offset'] = $new_offset;
+
+    // Ajouter un argument d'offset à la requête
+    $args['offset'] = $offset;
+
+    // Exécution de la requête WP_Query avec le nouvel offset
+    $query = new WP_Query($args);
+
+    // Affichage des résultats
     if ($query->have_posts()) :
         while ($query->have_posts()) :
             $query->the_post();
@@ -145,7 +167,6 @@ function load_more_images() {
     wp_die();
 }
 
-
 function get_random_gallery_image_url() {
     $args = array(
         'post_type' => 'photos',
@@ -163,5 +184,3 @@ function get_random_gallery_image_url() {
     // Si aucune image n'est trouvée, retourner une image de remplacement par défaut
     return get_stylesheet_directory_uri() . '/assets/header-image.png';
 }
-
-

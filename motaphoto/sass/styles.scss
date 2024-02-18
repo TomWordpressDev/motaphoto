@@ -3,10 +3,28 @@
 @import 'modale';
 @import 'galerie';
 @import 'acceuil';
+@import 'single';
 h1{
-    color: blue;
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 6rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
 }
-
+h3{
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.1125rem;
+    text-transform: uppercase; 
+}
 body{
     margin: auto;
     width: 100%;

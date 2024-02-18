@@ -79,13 +79,32 @@ $formats = get_terms('format');
             </div>
 
             <button id="load-more">Charger plus</button>
+            
                        
     </main>
 
 
 <?php get_footer(); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    // /js/scripts.js
+jQuery(document).ready(function($) {
+    // Fermer la modale lorsque l'utilisateur clique en dehors d'elle
+    $(document).click(function(event) {
+        if ($(event.target).closest('.modal-content').length === 0) {
+            $('#contactModal').fadeOut();
+        }
+    });
+});
+jQuery(document).ready(function($) {
+  console.log("Script executed!")
+  
+});
 
+
+
+
+</script>
 <script>
     jQuery(document).ready(function($) {
         // Réinitialiser les valeurs par défaut des sélecteurs
