@@ -61,10 +61,21 @@ $formats = get_terms('format');
                                 $formats = get_the_terms(get_the_ID(), 'format');
                                 $annee = get_post_meta(get_the_ID(), 'annee', true);
                                 ?>
-                                <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
-                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('full'); ?></a>
-                                    <span class="annee"><?php echo $annee; ?></span>
-                                </div>
+                        <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
+    <?php the_post_thumbnail('full'); ?>
+    <div class="image-overlay">
+        <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
+        <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
+        <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
+            <i class="fas fa-search-plus"></i>
+        </a>
+        <a href="<?php the_permalink(); ?>" class="post-permalink">
+            <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+    <span class="annee"><?php echo $annee; ?></span>
+</div>
+
                                 <?php
                             endwhile;
                             wp_reset_postdata();
@@ -80,12 +91,14 @@ $formats = get_terms('format');
 
             <button id="load-more">Charger plus</button>
             
-                       
     </main>
 
 
 <?php get_footer(); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
 <script>
     // /js/scripts.js
 jQuery(document).ready(function($) {
@@ -100,10 +113,6 @@ jQuery(document).ready(function($) {
   console.log("Script executed!")
   
 });
-
-
-
-
 </script>
 <script>
     jQuery(document).ready(function($) {
@@ -113,37 +122,44 @@ jQuery(document).ready(function($) {
         $('#annee').val('');
 
         // Fonction pour filtrer les images
-        function filtrerImages() {
-            var categorie = $('#categorie').val();
-            var format = $('#format').val();
-            var annee = $('#annee').val();
+ // Fonction pour filtrer les images
+function filtrerImages() {
+    var categorie = $('#categorie').val();
+    var format = $('#format').val();
+    var annee = $('#annee').val();
 
-            $('.grid').empty(); // Vide la grille avant d'ajouter les nouvelles images
-            
-            $.ajax({
-                url: '<?php echo admin_url('admin-ajax.php'); ?>',
-                type: 'POST',
-                data: {
-                    action: 'filter_images',
-                    categorie: categorie,
-                    format: format,
-                    annee: annee
-                },
-                success: function(response) {
-                    $('.grid').html(response); // Ajoute les nouvelles images à la grille
-                    // Cacher le bouton "Charger plus" si aucune image supplémentaire n'est disponible
-                    if ($('.grid .item').length < 8) {
-                        $('#load-more').hide();
-                    } else {
-                        $('#load-more').show();
-                    }
-                    // Cacher le bouton si aucun résultat n'est retourné
-                    if (response.trim() == 'Aucune image trouvée.') {
-                        $('#load-more').hide();
-                    }
-                }
+    $('.grid').empty(); // Vide la grille avant d'ajouter les nouvelles images
+    
+    $.ajax({
+        url: '<?php echo admin_url('admin-ajax.php'); ?>',
+        type: 'POST',
+        data: {
+            action: 'filter_images',
+            categorie: categorie,
+            format: format,
+            annee: annee
+        },
+        success: function(response) {
+            $('.grid').html(response); // Ajoute les nouvelles images à la grille
+            // Cacher le bouton "Charger plus" si aucune image supplémentaire n'est disponible
+            if ($('.grid .item').length < 8) {
+                $('#load-more').hide();
+            } else {
+                $('#load-more').show();
+            }
+            // Cacher le bouton si aucun résultat n'est retourné
+            if (response.trim() == 'Aucune image trouvée.') {
+                $('#load-more').hide();
+            }
+            // Réinitialiser Fancybox pour les nouvelles images
+            $('.grid item').attr('data-fancybox', 'gallery');
+            $('.grid item').fancybox({
+                // Options éventuelles de Fancybox
             });
         }
+    });
+}
+
 
         // Filtre lorsque le sélecteur de catégorie change
         $('#categorie').on('change', function() {
@@ -178,13 +194,25 @@ jQuery(document).ready(function($) {
                     annee: annee
                 },
                 success: function(response) {
-                    if (response != '') {
-                        $('.grid').append(response);
-                        offset += 8;
-                    } else {
-                        $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
-                    }
-                }
+    if (response != '') {
+        $('.grid').append(response);
+        offset += 8;
+        // Réinitialiser Fancybox pour les nouvelles images
+        $('.grid item').each(function() {
+            $(this).attr('data-fancybox', 'gallery');
+        });
+        // Mise à jour de l'attribut data-fancybox pour les nouvelles images
+        $('.grid item').fancybox({
+            // Options éventuelles de Fancybox
+        });
+    } else {
+        $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
+    }
+}
+
+
+
+
             });
         });
     });

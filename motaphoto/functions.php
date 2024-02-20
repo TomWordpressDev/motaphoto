@@ -66,10 +66,21 @@ function filter_images() {
             $formats = get_the_terms(get_the_ID(), 'format');
             $annee = get_post_meta(get_the_ID(), 'annee', true); // Récupérer l'année depuis les données de la photo
     ?>
-            <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
-                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a> <!-- Utilisez 'large' pour la taille de l'image -->
-                <span class="annee"><?php echo $annee; ?></span> <!-- Afficher l'année -->
-            </div>
+           <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
+    <?php the_post_thumbnail('full'); ?>
+    <div class="image-overlay">
+        <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
+        <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
+        <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
+            <i class="fas fa-search-plus"></i>
+        </a>
+        <a href="<?php the_permalink(); ?>" class="post-permalink">
+            <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+    <span class="annee"><?php echo $annee; ?></span>
+</div>
+
     <?php
         endwhile;
         wp_reset_postdata();
@@ -153,10 +164,21 @@ function load_more_images() {
             $formats = get_the_terms(get_the_ID(), 'format');
             $annee = get_post_meta(get_the_ID(), 'annee', true);
             ?>
-            <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
-                <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('large'); ?></a>
-                <span class="annee"><?php echo $annee; ?></span>
-            </div>
+         <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
+    <?php the_post_thumbnail('full'); ?>
+    <div class="image-overlay">
+        <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
+        <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
+        <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
+            <i class="fas fa-search-plus"></i>
+        </a>
+        <a href="<?php the_permalink(); ?>" class="post-permalink">
+            <i class="fas fa-external-link-alt"></i>
+        </a>
+    </div>
+    <span class="annee"><?php echo $annee; ?></span>
+</div>
+
             <?php
         endwhile;
         wp_reset_postdata();
@@ -184,3 +206,4 @@ function get_random_gallery_image_url() {
     // Si aucune image n'est trouvée, retourner une image de remplacement par défaut
     return get_stylesheet_directory_uri() . '/assets/header-image.png';
 }
+
