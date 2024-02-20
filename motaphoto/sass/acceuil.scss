@@ -13,6 +13,16 @@
 
 
 /* Filtres */
+
+
+/* Changement de couleur au survol */
+select option:hover {
+    background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
+}
+select option:checked{
+    background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
+}
+
 .filters-container{   
     display: flex;
     flex-direction: row;
@@ -94,6 +104,8 @@
     background: #D8D8D8;
     box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.02);
 }
+
+
 
 @media screen and (max-width: 768px) {
    

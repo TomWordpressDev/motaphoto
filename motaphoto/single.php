@@ -6,6 +6,12 @@
 <!-- Inclure jQuery et Slick Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<!-- Inclure Fancybox CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"/>
+
+<!-- Inclure Fancybox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
 
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
@@ -126,24 +132,39 @@
                   
                         <?php
                         // Afficher les images supplémentaires
-                        if ($additional_images_query->have_posts()) {
-                            echo '<h3>Vous aimerez AUSSI</h3>';
-                            echo '<div class="grid-single">';
-                            while ($additional_images_query->have_posts()) {
-                                $additional_images_query->the_post();
-                                if (has_post_thumbnail()) {
-                                    // Ajouter un lien vers la page de détails de l'image
-                                    echo '<div class="item">';
-                                    echo '<a href="' . get_permalink() . '">';
-                                    the_post_thumbnail('large');
-                                    echo '</a>';
-                                    echo '</div>';
-                                }
-                            }
-                            echo '</div>';
-                            // Réinitialiser la requête WP_Query
-                            wp_reset_postdata();
-                        }
+                       // Afficher les images supplémentaires
+// Afficher les images supplémentaires
+if ($additional_images_query->have_posts()) {
+    echo '<h3>Vous aimerez AUSSI</h3>';
+    echo '<div class="grid-single">';
+    while ($additional_images_query->have_posts()) {
+        $additional_images_query->the_post();
+        if (has_post_thumbnail()) {
+            // Récupérer la catégorie de l'image
+            $categories = get_the_terms(get_the_ID(), 'categorie');
+            $category_name = !empty($categories) ? esc_html($categories[0]->name) : '';
+
+            // Ajouter un lien vers la page de détails de l'image avec les attributs pour Fancybox
+            echo '<div class="item">';
+            the_post_thumbnail('large');
+           
+            
+            echo '<div class="image-overlay">';
+            echo '<span class="image-title">' . get_the_title() . '</span>'; // Titre de l'image
+            echo '<a class="lightbox-trigger" data-fancybox="gallery" href="' . get_the_post_thumbnail_url(get_the_ID(), 'large') . '"><i class="fas fa-expand"></i></a>'; // Icône loupe
+            echo '<span class="image-category">' . $category_name . '</span>'; // Nom de la catégorie
+            echo '<a href="' . get_permalink() . '" class="post-permalink"><i class="fas fa-regular fa-eye"></i></a>'; // Icône lien vers le permalien
+            echo '</div>';
+            echo '</a>';
+            echo '</div>';
+        }
+    }
+    echo '</div>';
+    // Réinitialiser la requête WP_Query
+    wp_reset_postdata();
+}
+
+
                         ?>
                     </article><!-- #post-<?php the_ID(); ?> -->
             <?php
@@ -160,6 +181,7 @@
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
+
 <script>
 jQuery(document).ready(function($) {
     // Ouvrir la modal lorsque le bouton est cliqué
@@ -216,4 +238,22 @@ jQuery(document).ready(function($) {
         var reference = '<?php echo isset($fields['photo_reference']) ? esc_js($fields['photo_reference']) : ''; ?>';
         $('#ref-photo').val(reference); 
     });
+</script>
+<script>$(document).ready(function() {
+    // Initialiser Fancybox avec la fonctionnalité de zoom
+    $('[data-fancybox="gallery"]').fancybox({
+        buttons: [
+            'zoom',
+            'slideShow',
+            'fullScreen',
+            'thumbs',
+            
+          
+        ],
+        thumbs: {
+            autoStart: true
+        }
+    });
+});
+
 </script>

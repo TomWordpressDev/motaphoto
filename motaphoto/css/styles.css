@@ -112,6 +112,15 @@
 }
 
 /* Filtres */
+/* Changement de couleur au survol */
+select option:hover {
+  background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
+}
+
+select option:checked {
+  background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
+}
+
 .filters-container {
   display: flex;
   flex-direction: row;
@@ -496,6 +505,19 @@ body {
 
 .lightbox-trigger {
   pointer-events: auto; /* Rend le lien de l'icône cliquable */
+}
+
+.thumbnail-image {
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .thumbnail-image {
+  transform: scale(1.1); /* Agrandir l'image */
+  cursor: move; /* Changer le curseur pour indiquer qu'il peut déplacer l'image */
+}
+
+.image-container:hover .thumbnail-image:active {
+  transform: scale(1.1) translate(-10%, -10%); /* Déplacer l'image au clic de la souris */
 }
 
 /*# sourceMappingURL=styles.css.map */

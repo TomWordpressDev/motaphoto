@@ -72,10 +72,10 @@ function filter_images() {
         <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
         <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
         <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
-            <i class="fas fa-search-plus"></i>
+            <i class="fas fa-expand"></i>
         </a>
         <a href="<?php the_permalink(); ?>" class="post-permalink">
-            <i class="fas fa-external-link-alt"></i>
+            <i class="fas fa-regular fa-eye"></i>
         </a>
     </div>
     <span class="annee"><?php echo $annee; ?></span>
@@ -170,10 +170,10 @@ function load_more_images() {
         <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
         <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
         <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
-            <i class="fas fa-search-plus"></i>
+            <i class="fas fa-expand"></i>
         </a>
         <a href="<?php the_permalink(); ?>" class="post-permalink">
-            <i class="fas fa-external-link-alt"></i>
+            <i class="fas fa-regular fa-eye"></i>
         </a>
     </div>
     <span class="annee"><?php echo $annee; ?></span>
