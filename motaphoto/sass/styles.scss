@@ -31,8 +31,7 @@ body{
     width: 100%;
 }
 
-.header{    
- 
+.header{     
     height: 5rem; 
     background: #FFF;
     box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
@@ -42,7 +41,7 @@ body{
     position: relative; 
 }
 
-.menu-header ul{
+#menu-primary-menu{
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -54,7 +53,7 @@ body{
     top: 10px;  
 }
 
-.menu-header ul a{  
+#menu-primary-menu a{  
     color: #000;
     font-family: "Space Mono";
     font-size: 1rem;

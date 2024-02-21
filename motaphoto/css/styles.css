@@ -482,7 +482,7 @@ body {
   position: relative;
 }
 
-.menu-header ul {
+#menu-primary-menu {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -494,7 +494,7 @@ body {
   top: 10px;
 }
 
-.menu-header ul a {
+#menu-primary-menu a {
   color: #000;
   font-family: "Space Mono";
   font-size: 1rem;

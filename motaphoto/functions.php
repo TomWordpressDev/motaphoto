@@ -11,13 +11,16 @@ function custom_theme_enqueue_scripts() {
 add_action('wp_enqueue_scripts', 'custom_theme_enqueue_scripts');
 
 // Enregistrer les menus de navigation
-function custom_theme_register_menus() {
-    register_nav_menus( array(
-        'primary-menu' => esc_html__( 'Menu' ),
-        'footer-menu'  => esc_html__( 'Footer Menu' ),
-    ) );
+function theme_register_menus() {
+    register_nav_menus(
+        array(
+            'primary-menu' => __( 'Primary Menu', 'theme-text-domain' ),
+            // Vous pouvez ajouter plus d'emplacements de menu au besoin
+        )
+    );
 }
-add_action( 'after_setup_theme', 'custom_theme_register_menus' );
+add_action( 'init', 'theme_register_menus' );
+
 
 // Gestion de la requête AJAX pour filtrer les images
 add_action('wp_ajax_filter_images', 'filter_images');
