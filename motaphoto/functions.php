@@ -66,20 +66,30 @@ function filter_images() {
             $formats = get_the_terms(get_the_ID(), 'format');
             $annee = get_post_meta(get_the_ID(), 'annee', true); // Récupérer l'année depuis les données de la photo
     ?>
-           <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
+<div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
     <?php the_post_thumbnail('full'); ?>
     <div class="image-overlay">
-        <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
-        <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
-        <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
-            <i class="fas fa-expand"></i>
-        </a>
+        
+        <?php
+        // Récupérer la référence de la photo
+        $photo_reference = get_post_meta(get_the_ID(), 'photo_reference', true);
+        ?>
+        
         <a href="<?php the_permalink(); ?>" class="post-permalink">
             <i class="fas fa-regular fa-eye"></i>
         </a>
+        <a class="full-view" href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery" data-caption="<div class=container-caption><div><?php echo $photo_reference; ?></div> <div> <?php echo $categories[0]->name; ?></div></div> ">
+            <i class="fas fa-expand"></i>
+        </a>    
+        <div class="info-thumbnail">
+            <div class="image-title"><?php the_title(); ?></div> <!-- Titre de l'image -->
+            <div class="image-category"><?php echo $categories[0]->name; ?></div> <!-- Catégorie de l'image -->
+        </div>
+        
     </div>
     <span class="annee"><?php echo $annee; ?></span>
 </div>
+
 
     <?php
         endwhile;
@@ -164,20 +174,30 @@ function load_more_images() {
             $formats = get_the_terms(get_the_ID(), 'format');
             $annee = get_post_meta(get_the_ID(), 'annee', true);
             ?>
-         <div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
+<div class="item <?php foreach ($categories as $categorie) echo $categorie->slug . ' '; foreach ($formats as $format) echo $format->slug . ' '; ?>">
     <?php the_post_thumbnail('full'); ?>
     <div class="image-overlay">
-        <span class="image-title"><?php the_title(); ?></span> <!-- Titre de l'image -->
-        <span class="image-category"><?php echo $categories[0]->name; ?></span> <!-- Catégorie de l'image -->
-        <a href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery">
-            <i class="fas fa-expand"></i>
-        </a>
+        
+        <?php
+        // Récupérer la référence de la photo
+        $photo_reference = get_post_meta(get_the_ID(), 'photo_reference', true);
+        ?>
+        
         <a href="<?php the_permalink(); ?>" class="post-permalink">
             <i class="fas fa-regular fa-eye"></i>
         </a>
+        <a class="full-view" href="<?php echo wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0]; ?>" class="lightbox-trigger" data-fancybox="gallery" data-caption="<div class=container-caption><div><?php echo $photo_reference; ?></div> <div> <?php echo $categories[0]->name; ?></div></div> ">
+            <i class="fas fa-expand"></i>
+        </a>    
+        <div class="info-thumbnail">
+            <div class="image-title"><?php the_title(); ?></div> <!-- Titre de l'image -->
+            <div class="image-category"><?php echo $categories[0]->name; ?></div> <!-- Catégorie de l'image -->
+        </div>
+        
     </div>
     <span class="annee"><?php echo $annee; ?></span>
 </div>
+
 
             <?php
         endwhile;

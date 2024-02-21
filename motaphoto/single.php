@@ -147,16 +147,22 @@ if ($additional_images_query->have_posts()) {
             // Ajouter un lien vers la page de détails de l'image avec les attributs pour Fancybox
             echo '<div class="item">';
             the_post_thumbnail('large');
-           
-            
             echo '<div class="image-overlay">';
-            echo '<span class="image-title">' . get_the_title() . '</span>'; // Titre de l'image
-            echo '<a class="lightbox-trigger" data-fancybox="gallery" href="' . get_the_post_thumbnail_url(get_the_ID(), 'large') . '"><i class="fas fa-expand"></i></a>'; // Icône loupe
-            echo '<span class="image-category">' . $category_name . '</span>'; // Nom de la catégorie
-            echo '<a href="' . get_permalink() . '" class="post-permalink"><i class="fas fa-regular fa-eye"></i></a>'; // Icône lien vers le permalien
-            echo '</div>';
-            echo '</a>';
-            echo '</div>';
+            // Récupérer la référence de la photo
+            $photo_reference = get_post_meta(get_the_ID(), 'photo_reference', true);
+            echo '<a href="' . get_the_permalink() . '" class="post-permalink">
+                    <i class="fas fa-regular fa-eye"></i>
+                </a>
+                <a class="full-view" href="' . wp_get_attachment_image_src(get_post_thumbnail_id(), 'large')[0] . '" class="lightbox-trigger" data-fancybox="gallery" data-caption="<div class=container-caption><div>' . $photo_reference . '</div> <div> ' . $categories[0]->name . '</div></div> ">
+                    <i class="fas fa-expand"></i>
+                </a>    
+                <div class="info-thumbnail">
+                    <div class="image-title">' . get_the_title() . '</div> <!-- Titre de l\'image -->
+                    <div class="image-category">' . $categories[0]->name . '</div> <!-- Catégorie de l\'image -->
+                </div>';
+            echo '</div>
+            <span class="annee">' . $annee . '</span>
+            </div>';
         }
     }
     echo '</div>';
