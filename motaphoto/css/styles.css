@@ -113,12 +113,9 @@
 
 /* Filtres */
 /* Changement de couleur au survol */
-select option:hover {
-  background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
-}
-
-select option:checked {
-  background: rgb(238, 18, 18) !important; /* Nouvelle couleur de fond au survol */
+/* CSS pour changer la couleur lors du survol des options dans un menu déroulant */
+.filter option:hover {
+  background-color: #eb1414; /* Couleur de fond au survol */
 }
 
 .filters-container {
