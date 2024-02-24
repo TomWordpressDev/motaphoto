@@ -91,16 +91,13 @@
     justify-content: space-between;
 }
 
-
-
-
-
 .grid-single{    
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
     gap: 1.25rem; /* Espacement entre les éléments */
     margin-left: auto; /* Centrer la grille horizontalement */
     margin-right: auto; /* Centrer la grille horizontalement */
+    margin-bottom: 6.81rem;
     justify-content: center;
     align-items: center; 
 }

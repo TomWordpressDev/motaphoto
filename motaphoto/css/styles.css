@@ -340,6 +340,7 @@
   gap: 1.25rem; /* Espacement entre les éléments */
   margin-left: auto; /* Centrer la grille horizontalement */
   margin-right: auto; /* Centrer la grille horizontalement */
+  margin-bottom: 6.81rem;
   justify-content: center;
   align-items: center;
 }
@@ -514,6 +515,9 @@ body {
 .footer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  border-top: 1px solid black;
 }
 .footer ul {
   list-style: none;
@@ -524,6 +528,9 @@ body {
 }
 .footer ul li {
   margin: 0 3.38rem;
+}
+.footer ul a {
+  text-decoration: none;
   color: #000;
   font-family: "Space Mono";
   font-size: 1rem;

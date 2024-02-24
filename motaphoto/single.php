@@ -252,8 +252,7 @@ jQuery(document).ready(function($) {
             'zoom',
             'slideShow',
             'fullScreen',
-            'thumbs',
-            
+            'thumbs',           
           
         ],
         thumbs: {

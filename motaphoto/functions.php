@@ -15,7 +15,8 @@ function theme_register_menus() {
     register_nav_menus(
         array(
             'primary-menu' => __( 'Primary Menu', 'theme-text-domain' ),
-            // Vous pouvez ajouter plus d'emplacements de menu au besoin
+            'footer-menu' => __( 'Footer Menu', 'theme-text-domain' ),
+            
         )
     );
 }

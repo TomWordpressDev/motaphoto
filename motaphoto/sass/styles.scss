@@ -79,7 +79,9 @@ body{
 .footer {
     display: flex;
     justify-content: center;
-
+    align-items: center;
+    height: 2.5rem; 
+    border-top: 1px solid black;
   
 
     ul {
@@ -90,16 +92,19 @@ body{
         flex-direction: row;
 
         li {
-            margin: 0 3.38rem; // Ajoutez un espacement entre les éléments de la liste si nécessaire
-            color: #000;
-            font-family: "Space Mono";
-            font-size: 1rem;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            text-transform: uppercase; 
-            
+            margin: 0 3.38rem; // Ajoutez un espacement entre les éléments de la liste si nécessaire         
         }
+            a{
+                text-decoration: none;
+                color: #000;
+                font-family: "Space Mono";
+                font-size: 1rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                text-transform: uppercase; 
+               
+            }
     }
 }
 
