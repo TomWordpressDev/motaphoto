@@ -1,0 +1,144 @@
+.main-filters-container{
+  display: none;    
+}
+
+.filters-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 9.12rem;
+  margin-left: 9.12rem;
+  margin-top: 4.94rem;
+  margin-bottom: 2.44rem;
+}
+
+.filter:hover{
+  background: #FFD6D6 !important;
+}
+.filter:active{
+  background: #FE5858 !important;
+}
+.filter:visited{
+  background: #E00000 !important;
+}
+
+.filter-options {
+  display: none;
+}
+
+
+
+.filter {
+  padding: 0.6875rem 1.5rem; 
+  color: var(--Black, #313144);
+
+  /* Drop Menu Menu */
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.125rem; /* 150% */
+  letter-spacing: 0.0225rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#filter-format{
+  right: 390px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
+  width: 16.25rem;
+  padding: 0.6875rem 1.125rem; 
+  color: #333;
+  padding: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.dropdown-toggle.opened {
+  background-color: #ffffff;
+  border-radius: 0.5rem  0.5rem 0rem 0rem;
+  border: 1.3px solid var(--Blues-Gray2, #B8BBC2);
+  width: 16.25rem;
+  padding: 0.6875rem 1.125rem; 
+  color: #333;
+  padding: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border-radius: 0rem 0rem 0.5rem 0.5rem;
+  background: var(--White, #FFF); 
+  z-index: 1;
+  width: 16.25rem;
+
+}
+
+
+.show {
+  display: block;
+  
+}
+
+.dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+    margin-left: 5px; /* Ajustez selon votre préférence */
+}
+.button-text, .dropdown-toggle{
+  color: var(--Black, #313144);
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.125rem; /* 150% */
+  letter-spacing: 0.0225rem;
+  text-transform: uppercase;
+}
+
+.rotate-chevron {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease; /* Animation de transition */
+}
+
+
+
+@media screen and (max-width: 768px) {
+   
+  #filter-format{
+    right: 0;
+  }
+
+  .filters-container, #filter-format{   
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;       
+  }
+
+  .filters-container{
+    margin-top: 1.5rem;
+    align-items: center;
+  }
+
+  .dropdown, #filter-format{
+    margin-bottom: 0.5rem;    
+  }
+  
+}

@@ -119,6 +119,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    border: none;
+    cursor: pointer;
+}
+#openModalButton:hover {
+    background: #000; 
+    color: #FFFFFF;
 }
 
 

@@ -9,9 +9,58 @@ $formats = get_terms('format');
     <main id="main" class="site-main">
         <header class="hero-header">
             <img class="header-image" src="<?php echo get_random_gallery_image_url(); ?>" >
+            <img class="header-title" src="<?php echo get_stylesheet_directory_uri() . '/assets/titre-header.png'; ?>" alt="titre header">
         </header>
-       
-            <div class="filters-container">
+        
+        <div class="filters-container">
+            <div class="dropdown">
+        <button class="dropdown-toggle" id="dropdownMenuButton">
+        <span class="button-text">Catégories</span>
+            <span class="arrow"><img class="chevron" src="<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>" alt="chevron"></span>
+        </button>
+        <div class="dropdown-content" id="dropdownContent">
+            <div class="filters" id="filter-categorie">
+                <div class="filter" data-value="all">CATEGORIES</div>
+                <?php foreach ($categories as $categorie) : ?>
+                    <div class="filter" data-value="<?php echo $categorie->slug; ?>"><?php echo $categorie->name; ?></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="dropdown" id="filter-format">
+        <button class="dropdown-toggle" id="dropdownMenuButton2">
+            <span class="button-text">Formats</span>
+            <span class="arrow"><img class="chevron2" src="<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>" alt="chevron"></span>
+        </button>
+        <div class="dropdown-content" id="dropdownContent2">
+            <div class="filters" id="filter-format">
+                <div class="filter" data-value="all">FORMATS</div>
+                <?php foreach ($formats as $format) : ?>
+                    <div class="filter" data-value="<?php echo $format->slug; ?>"><?php echo $format->name; ?></div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropdown-toggle" id="dropdownMenuButton3">
+            <span class="button-text">Trier par</span>
+            <span class="arrow"><img class="chevron3" src="<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>" alt="chevron">
+            </span>
+        </button>
+        <div class="dropdown-content" id="dropdownContent3">
+
+            <div class="filters" id="filter-annee">
+                <div class="filter" data-value="">TRIER PAR</div>
+                <div class="filter" data-value="asc">A partir des plus anciennes</div>
+                <div class="filter" data-value="desc">A partir des plus récentes</div>
+            </div>
+        </div>
+        </div>
+        </div>
+            <div class="main-filters-container">
                 <div class="filters">
                     <select id="categorie" class="filter">
                         <option value="all">CATEGORIES</option>
@@ -109,7 +158,215 @@ $formats = get_terms('format');
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    // Ajouter ou supprimer la classe de sélection lorsque le filtre est cliqué
+    $('.filter').on('click', function() {
+        // Supprimer la classe de sélection de tous les filtres et réinitialiser les couleurs de fond et de texte
+        $('.filter').removeClass('selected').css({
+            'background-color': '#fff',
+            'color': '#000'
+        });
+        // Ajouter la classe de sélection au filtre cliqué et changer la couleur de fond et de texte
+        $(this).addClass('selected').css({
+            'background-color': '#E00000',
+            'color': '#fff'
+        });
+        
+        // Récupérer la valeur du filtre sélectionné
+        var value = $(this).data('value');
+        // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
+        console.log("Filtrage avec la valeur :", value);
+    });
+});
 
+
+</script>
+<script>
+    jQuery(document).ready(function($) {
+    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
+    $('#dropdownMenuButton').on('click', function() {
+        $(this).toggleClass('opened'); // Ajouter/retirer la classe 'opened' au bouton
+        $('.chevron').toggleClass('rotate-chevron'); // Ajouter/retirer la classe de rotation au chevron
+    });
+});
+
+</script>
+<script>
+    jQuery(document).ready(function($) {
+    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
+    $('#dropdownMenuButton2').on('click', function() {
+        $(this).toggleClass('opened'); // Ajouter/retirer la classe 'opened' au bouton
+        $('.chevron2').toggleClass('rotate-chevron'); // Ajouter/retirer la classe de rotation au chevron
+    });
+});
+
+</script>
+<script>
+    jQuery(document).ready(function($) {
+    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
+    $('#dropdownMenuButton3').on('click', function() {
+        $(this).toggleClass('opened'); // Ajouter/retirer la classe 'opened' au bouton
+        $('.chevron3').toggleClass('rotate-chevron'); // Ajouter/retirer la classe de rotation au chevron
+    });
+});
+
+</script>
+<script>
+jQuery(document).ready(function($) {
+    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
+    $('#categorie').on('change', function() {
+        var selectedCategory = $(this).find('option:selected').text();
+        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
+        $('#dropdownMenuButton .button-text').text(selectedCategory);
+        $('#dropdownMenuButton .dropdown-image').attr('src', chevronImage);
+    });
+});
+
+</script>
+<script>
+jQuery(document).ready(function($) {
+    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
+    $('#format').on('change', function() {
+        var selectedCategory = $(this).find('option:selected').text();
+        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
+        $('#dropdownMenuButton2 .button-text').text(selectedCategory);
+        $('#dropdownMenuButton2 .dropdown-image').attr('src', chevronImage);
+    });
+});
+</script>
+<script>
+jQuery(document).ready(function($) {
+    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
+    $('#annee').on('change', function() {
+        var selectedCategory = $(this).find('option:selected').text();
+        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
+        $('#dropdownMenuButton3 .button-text').text(selectedCategory);
+        $('#dropdownMenuButton3 .dropdown-image').attr('src', chevronImage);
+    });
+});
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var dropdownMenuButton = document.getElementById("dropdownMenuButton");
+  var dropdownContent = document.getElementById("dropdownContent");
+
+  dropdownMenuButton.addEventListener("click", function() {
+    dropdownContent.classList.toggle("show");
+    dropdownMenuButton.classList.toggle("opened");
+  });
+
+  // Fermer le menu déroulant si l'utilisateur clique en dehors
+  window.addEventListener("click", function(event) {
+    if (!event.target.matches('.dropdown-toggle')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        var dropdownButton = openDropdown.previousElementSibling;
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+          dropdownButton.classList.remove('opened');
+        }
+      }
+    }
+  });
+
+  // Ajouter un écouteur d'événement pour les filtres
+  var filters = document.querySelectorAll('.filter');
+  filters.forEach(function(filter) {
+    filter.addEventListener('click', function() {
+      var value = this.getAttribute('data-value');
+      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
+      console.log("Filtrage avec la valeur :", value);
+    });
+  });
+});
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    var dropdownMenuButton = document.getElementById("dropdownMenuButton2");
+    var dropdownContent = document.getElementById("dropdownContent2");
+
+    dropdownMenuButton.addEventListener("click", function() {
+    dropdownContent.classList.toggle("show");
+    dropdownMenuButton.classList.toggle("opened");
+});
+
+// Fermer le menu déroulant si l'utilisateur clique en dehors
+window.addEventListener("click", function(event) {
+if (!event.target.matches('.dropdown-toggle2')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content2");
+    for (var i = 0; i < dropdowns.length; i++) {
+    var openDropdown = dropdowns[i];
+    var dropdownButton = openDropdown.previousElementSibling;
+    if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+        dropdownButton.classList.remove('opened');
+    }
+    }
+}
+});
+
+  // Ajouter un écouteur d'événement pour les filtres
+  var filters = document.querySelectorAll('.filter');
+  filters.forEach(function(filter) {
+    filter.addEventListener('click', function() {
+      var value = this.getAttribute('data-value');
+      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
+      console.log("Filtrage avec la valeur :", value);
+    });
+  });
+});
+
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var dropdownMenuButton = document.getElementById("dropdownMenuButton3");
+  var dropdownContent = document.getElementById("dropdownContent3");
+
+  dropdownMenuButton.addEventListener("click", function() {
+    dropdownContent.classList.toggle("show");
+    dropdownMenuButton.classList.toggle("opened");
+  });
+
+  // Fermer le menu déroulant si l'utilisateur clique en dehors
+  window.addEventListener("click", function(event) {
+    if (!event.target.matches('.dropdown-toggle3')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content3");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        var dropdownButton = openDropdown.previousElementSibling;
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+          dropdownButton.classList.remove('opened');
+        }
+      }
+    }
+  });
+
+  // Ajouter un écouteur d'événement pour les filtres
+  var filters = document.querySelectorAll('.filter');
+  filters.forEach(function(filter) {
+    filter.addEventListener('click', function() {
+      var value = this.getAttribute('data-value');
+      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
+      console.log("Filtrage avec la valeur :", value);
+    });
+  });
+});
+
+</script>
+<script>
+    // Synchronisation des filtres select et div
+$('.filter').on('click', function() {
+    var value = $(this).data('value');
+    var id = $(this).parent().attr('id').replace('filter-', ''); // Récupérer l'ID du filtre
+    $('#' + id).val(value).trigger('change'); // Mettre à jour le select correspondant
+});
+
+</script>
 <script>
     // /js/scripts.js
 jQuery(document).ready(function($) {
