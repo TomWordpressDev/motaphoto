@@ -101,6 +101,42 @@
   line-height: normal;
 }
 
+@media screen and (max-width: 375px) {
+  .modal {
+    margin: 0;
+  }
+  .contact-image {
+    margin-top: 1.13rem !important;
+  }
+  .modal-content {
+    width: 20rem;
+    height: 36.4375rem;
+  }
+  .modal-content > * {
+    position: relative !important;
+    width: 20rem;
+    margin: 0;
+    padding: 0;
+  }
+  .wpcf7-form.init {
+    margin: 0 !important;
+    justify-items: center;
+    align-items: center;
+    margin-left: 3rem !important;
+  }
+  .modal-content input {
+    width: 80%; /* Spécifiez la largeur souhaitée */
+    /* Autres styles... */
+    justify-content: center;
+  }
+  .modal-content textarea {
+    width: 80%;
+    height: 95%;
+  }
+  .wpcf7-form-control.wpcf7-submit.has-spinner {
+    width: 82%;
+  }
+}
 .hero-header {
   width: 100%;
   position: relative;
@@ -219,6 +255,51 @@
   }
   .header-title {
     height: 4.875rem !important; /* Modifier selon votre besoin */
+  }
+  .footer {
+    height: 12.9375rem !important;
+    text-align: center;
+    justify-content: center;
+  }
+  .footer ul {
+    display: flex;
+    margin-top: 1.5rem !important;
+    flex-direction: column !important;
+  }
+  .footer ul li {
+    margin-bottom: 1.5rem !important;
+  }
+}
+@media screen and (max-width: 375px) {
+  .hero-header {
+    width: 100%;
+  }
+  .hero-header img {
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+  .grid {
+    margin-top: 20px;
+    grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.81rem;
+    margin-left: 1.81rem;
+  }
+  .item {
+    display: flex;
+    box-sizing: border-box; /* Pour inclure la marge dans la largeur */
+    width: auto;
+    height: 15rem;
+    width: 100%;
+    position: relative; /* Pour positionner l'élément */
+    overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+    justify-content: center;
+    align-items: center;
+  }
+  .header-title {
+    height: 1.875rem !important; /* Modifier selon votre besoin */
   }
   .footer {
     height: 12.9375rem !important;
@@ -379,6 +460,111 @@
   justify-content: space-between;
 }
 
+@media screen and (max-width: 768px) {
+  .detail {
+    flex-direction: column-reverse;
+  }
+  .d-photo {
+    position: relative;
+  }
+  .carousel-container {
+    display: none;
+  }
+  .container-question {
+    flex-direction: column;
+    gap: 0;
+    margin-left: 21%;
+    margin-bottom: 1.44rem;
+    margin-top: 1.44rem;
+  }
+  .container-question p {
+    text-align: left;
+    width: 100%;
+  }
+  .grid-single {
+    grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+    justify-content: center;
+    align-items: center;
+  }
+  .detail .post-thumbnail {
+    width: 100%;
+  }
+  .detail-photo {
+    border: none;
+  }
+  .section-contact {
+    margin-right: -40% !important;
+    margin-left: -40% !important;
+    border-top: 1px solid black;
+  }
+  .grid-single .item {
+    height: 25rem;
+  }
+  .grid-single {
+    margin: 0;
+    margin-bottom: 1.52rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .single-content {
+    margin-top: 2.38rem;
+    margin-right: 2.12rem;
+    margin-left: 2.12rem;
+  }
+  .detail {
+    flex-direction: column-reverse;
+  }
+  .d-photo {
+    position: relative;
+  }
+  .carousel-container {
+    display: none;
+  }
+  .container-question {
+    flex-direction: column;
+    gap: 0;
+    margin-left: 25%;
+    margin-bottom: 1.44rem;
+    margin-top: 1.44rem;
+  }
+  .container-question p {
+    text-align: left;
+    width: 100%;
+  }
+  .grid-single {
+    grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+    justify-content: center;
+    align-items: center;
+  }
+  .detail .post-thumbnail {
+    width: 100%;
+  }
+  .detail-photo {
+    border: none;
+  }
+  .section-contact {
+    margin-right: -40% !important;
+    margin-left: -40% !important;
+    border-top: 1px solid black;
+  }
+  .grid-single .item {
+    height: 15rem;
+  }
+  .grid-single {
+    margin: 0;
+    margin-bottom: 1.52rem;
+  }
+  .d-photo h1 {
+    color: #000;
+    /* H2 mobile */
+    font-family: "Space Mono";
+    font-size: 2.875rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 3rem;
+    text-transform: uppercase;
+  }
+}
 .item {
   position: relative;
   display: inline-block;

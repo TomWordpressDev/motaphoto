@@ -103,3 +103,56 @@
     line-height: normal;
 }
 
+@media screen and (max-width: 375px) {
+   .modal{
+        margin: 0;  
+   }
+   .contact-image{
+        margin-top: 1.13rem !important;
+   }
+   .modal-content {
+        width: 20rem;
+        height: 36.4375rem; 
+   }
+   .modal-content > *{
+        position: relative !important;
+        width: 20rem;
+        margin: 0;
+        padding: 0;
+   }
+   .wpcf7-form.init{
+        margin: 0 !important;
+        justify-items: center;
+        align-items: center;
+        margin-left: 3rem !important;
+   }
+   .modal-content input{
+        width: 80%; /* Spécifiez la largeur souhaitée */
+        /* Autres styles... */
+        justify-content: center;
+    }
+    .modal-content textarea{
+        width: 80%;
+        height: 95%;
+    
+    }
+    .wpcf7-form-control.wpcf7-submit.has-spinner{
+        width: 82%;
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
