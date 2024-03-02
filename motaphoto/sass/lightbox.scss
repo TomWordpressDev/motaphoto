@@ -63,3 +63,39 @@
     top: 0.69rem;
     right: 1.12rem;
 }
+
+.container-suivantes{
+    display: flex;
+    flex-direction: row;
+    margin-left: -80px !important;
+}
+.container-suivantes span{
+    margin-right: 15px;
+    margin-top: 3px;
+    color: #FFF;
+    font-family: "Space Mono";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ 
+}
+.container-precedentes{
+    display: flex;
+    flex-direction: row; 
+}
+.container-precedentes span{
+    margin-left: 15px;
+    margin-top: 3px;
+    color: #FFF;
+    font-family: "Space Mono";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+ 
+}
+
+.fancybox-button{
+    background: none !important;
+}
