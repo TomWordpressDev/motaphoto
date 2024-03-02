@@ -19,6 +19,7 @@
     position: absolute;
     bottom: 20px;
     width: 50%;
+ 
 }
 .detail-photo p, strong{
     color: #000;
@@ -143,4 +144,128 @@
     flex-wrap: wrap;
     gap: 335px;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+
+    .detail{
+        flex-direction: column-reverse;
+    }
+    .d-photo{
+        position: relative;
+    }
+    .carousel-container{
+        display: none;
+    }
+    
+    .container-question{
+      
+        flex-direction: column;
+        gap: 0;
+       
+        margin-left: 21%;
+        margin-bottom: 1.44rem;
+        margin-top: 1.44rem;
+       
+    }
+    .container-question p{
+        text-align: left;
+        width: 100%;
+    }
+
+    .grid-single{
+        grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+        justify-content: center;
+        align-items: center;
+    }
+    .detail .post-thumbnail{
+        width: 100%;
+    }
+    .detail-photo{
+        border: none;
+    }
+    .section-contact{
+        margin-right: -40% !important;
+        margin-left: -40% !important;
+        border-top: 1px solid black;
+       
+    }
+    .grid-single .item{
+        height: 25rem;
+    }
+    .grid-single{
+        margin: 0;
+        margin-bottom: 1.52rem;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .single-content{
+        margin-top: 2.38rem;
+        margin-right: 2.12rem;
+        margin-left: 2.12rem;
+    }
+   
+    .detail{
+        flex-direction: column-reverse;
+    }
+    .d-photo{
+        position: relative;
+    }
+    .carousel-container{
+        display: none;
+    }
+    
+    .container-question{
+      
+        flex-direction: column;
+        gap: 0;
+       
+        margin-left: 25%;
+        margin-bottom: 1.44rem;
+        margin-top: 1.44rem;
+       
+    }
+    .container-question p{
+        text-align: left;
+        width: 100%;
+    }
+
+    .grid-single{
+        grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+        justify-content: center;
+        align-items: center;
+    }
+    .detail .post-thumbnail{
+        width: 100%;
+    }
+    .detail-photo{
+        border: none;
+    }
+    .section-contact{
+        margin-right: -40% !important;
+        margin-left: -40% !important;
+        border-top: 1px solid black;
+       
+    }
+    .grid-single .item{
+        height: 15rem;
+    }
+    .grid-single{
+        margin: 0;
+        margin-bottom: 1.52rem;
+    }
+    .d-photo h1{
+        color: #000;
+
+        /* H2 mobile */
+        font-family: "Space Mono";
+        font-size: 2.875rem;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 3rem; 
+        text-transform: uppercase;
+    }
+  
+  
 }

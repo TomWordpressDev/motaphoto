@@ -87,7 +87,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    cursor: pointer;   
+    cursor: pointer; 
 }
 
 #load-more:hover {
@@ -150,17 +150,53 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 375px) {
+   
+    .hero-header{    
+        width: 100%;
+    }
+    .hero-header img{
+        height: auto; 
+        object-fit: cover;
+        width: 100%;
+    }
+    .grid {
+        margin-top:20px ;
+        grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+        justify-content: center;
+        align-items: center;
+        margin-right: 1.81rem;
+        margin-left: 1.81rem;
+    }
+    .item {
+        display: flex;
+        box-sizing: border-box; /* Pour inclure la marge dans la largeur */
+        width: auto;
+        height: 15rem;
+        width: 100%; 
+        position: relative; /* Pour positionner l'élément */
+        overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+        justify-content: center;
+        align-items: center;
+    }
+    .header-title{
+       
+        height: 1.875rem !important; /* Modifier selon votre besoin */ 
+    }
+    .footer{
+        height: 12.9375rem !important;
+        text-align: center;
+        justify-content: center;
+    }
+   
+    .footer ul{
+        display: flex;
+        margin-top: 1.5rem !important;
+        flex-direction: column !important;
+    }
+    .footer ul li{
+        margin-bottom: 1.5rem !important;
+        
+    }
+  
+}
