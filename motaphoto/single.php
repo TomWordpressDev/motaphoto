@@ -24,7 +24,7 @@
         infobar: true,          // Display information bar
         smallBtn: false,        // Display small close button
         toolbar: true,          // Display toolbar
-        buttons: ['slideShow', 'thumbs', 'close'], // Customize toolbar buttons
+        buttons: ['thumbs', 'close'], // Customize toolbar buttons
 
         // Animation Options
         animationEffect: 'fade',        // Transition effect
