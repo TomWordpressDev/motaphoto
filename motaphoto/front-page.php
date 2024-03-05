@@ -414,6 +414,12 @@ jQuery(document).ready(function($) {
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
     if (!event.target.closest('.dropdown-toggle')) {
+      // Vérifier si un choix a été fait
+      var selectedCategory = $('#dropdownContent .selected').text();
+      if (selectedCategory !== "") {
+        // Afficher le choix sélectionné dans le bouton
+        $('#dropdownMenuButton .button-text').text(selectedCategory);
+      }
       $('#dropdownContent').hide(); // Cacher le menu déroulant
       $('#dropdownMenuButton').removeClass('opened'); // Retirer la classe 'opened' du bouton
       $('.chevron').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
@@ -462,12 +468,17 @@ jQuery(document).ready(function($) {
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
     if (!event.target.closest('.dropdown-toggle')) {
+      // Vérifier si un choix a été fait
+      var selectedCategory = $('#dropdownContent2 .selected').text();
+      if (selectedCategory !== "") {
+        // Afficher le choix sélectionné dans le bouton
+        $('#dropdownMenuButton2 .button-text').text(selectedCategory);
+      }
       $('#dropdownContent2').hide(); // Cacher le menu déroulant
       $('#dropdownMenuButton2').removeClass('opened'); // Retirer la classe 'opened' du bouton
       $('.chevron2').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
     }
   });
-
   // Ajouter un écouteur d'événement pour les filtres
   var filters = document.querySelectorAll('.filter');
   filters.forEach(function(filter) {
@@ -509,6 +520,12 @@ jQuery(document).ready(function($) {
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
     if (!event.target.closest('.dropdown-toggle')) {
+      // Vérifier si un choix a été fait
+      var selectedCategory = $('#dropdownContent3 .selected').text();
+      if (selectedCategory !== "") {
+        // Afficher le choix sélectionné dans le bouton
+        $('#dropdownMenuButton3 .button-text').text(selectedCategory);
+      }
       $('#dropdownContent3').hide(); // Cacher le menu déroulant
       $('#dropdownMenuButton3').removeClass('opened'); // Retirer la classe 'opened' du bouton
       $('.chevron3').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
