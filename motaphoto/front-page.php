@@ -237,130 +237,117 @@ $formats = get_terms('format');
 });
 
 </script>
+
 <script>
+
 jQuery(document).ready(function($) {
-    // Ajouter ou supprimer la classe de sélection lorsque le filtre est cliqué
+    // Fonction pour appliquer la sélection des filtres à tous les éléments
+    function applyFilters() {
+        $('.filter').each(function() {
+            var value = $(this).data('value');
+            if ($(this).hasClass('selected')) {
+                $(this).css({
+                    'background-color': '#E00000',
+                    'color': '#fff'
+                });
+            } else {
+                $(this).css({
+                    'background-color': '#fff',
+                    'color': '#000'
+                });
+            }
+        });
+
+        // Filtrer les éléments en fonction des filtres sélectionnés
+        var selectedValues = $('.filter.selected').map(function() {
+            return $(this).data('value');
+        }).get();
+
+        if (selectedValues.length > 0) {
+            $('.item').hide(); // Masquer tous les éléments
+            for (var i = 0; i < selectedValues.length; i++) {
+                var value = selectedValues[i];
+                $('.item.' + value).show(); // Afficher les éléments correspondant à chaque filtre sélectionné
+            }
+        } else {
+            $('.item').show(); // Si aucun filtre n'est sélectionné, afficher tous les éléments
+        }
+    }
+
+    // Gérer le clic sur un filtre
     $('.filter').on('click', function() {
-        // Supprimer la classe de sélection de tous les filtres et réinitialiser les couleurs de fond et de texte
-        $('.filter').removeClass('selected').css({
-            'background-color': '#fff',
-            'color': '#000'
-        });
-        // Ajouter la classe de sélection au filtre cliqué et changer la couleur de fond et de texte
-        $(this).addClass('selected').css({
-            'background-color': '#E00000',
-            'color': '#fff'
-        });
-        
-        // Récupérer la valeur du filtre sélectionné
         var value = $(this).data('value');
-        // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
-        console.log("Filtrage avec la valeur :", value);
+        
+        // Désélectionner tous les autres filtres du même groupe
+        var group = $(this).parent().attr('id');
+        $('#' + group + ' .filter').removeClass('selected');
+
+        // Sélectionner le filtre actuel
+        $(this).addClass('selected');
+
+        // Appliquer les filtres
+        applyFilters();
     });
+
+    // Initialiser les filtres au chargement de la page
+    applyFilters();
 });
 
 
 </script>
-<script>
-jQuery(document).ready(function($) {
-    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
-    $('#dropdownMenuButton').on('click', function(event) {
-        event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-        // Vérifier si le dropdown-content est visible
-        if ($('#dropdownContent').is(':visible')) {
-            // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-            $('.chevron').removeClass('rotate-chevron');
-        } else {
-            // Sinon, appliquer la rotation normale au chevron
-            $('.chevron').addClass('rotate-chevron');
-        }
-        // Toggle de la visibilité du dropdown-content
-        $('#dropdownContent').toggle();
-        // Toggle de la classe 'opened' sur le bouton
-        $(this).toggleClass('opened');
-    });
 
-    // Fermer le menu lorsque l'utilisateur clique en dehors
-    $(document).on('click', function(event) {
-        // Vérifier si le clic n'est pas sur le bouton ou le contenu du dropdown
-        if (!$(event.target).closest('#dropdownMenuButton').length && !$(event.target).closest('#dropdownContent').length) {
-            // Cacher le dropdown-content et retirer la classe 'opened' du bouton
-            $('#dropdownContent').hide();
-            $('#dropdownMenuButton').removeClass('opened');
-            // Remettre le chevron à sa rotation initiale
-            $('.chevron').removeClass('rotate-chevron');
-        }
+<script>
+// Pour le premier menu
+$(document).ready(function($) {
+    $('#dropdownContent .dropdown-item').on('click', function() {
+        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
+        $('#dropdownContent .dropdown-item').removeClass('selected');
+        $(this).addClass('selected');
+        // Mettre le texte du toggle au choix sélectionné
+        var selectedCategory = $(this).text();
+        $('#dropdownMenuButton .button-text').text(selectedCategory); // Modifier uniquement ce bouton
+        // Fermer le menu
+        $('#dropdownContent').hide();
+        $('#dropdownMenuButton').removeClass('opened');
+        // Remettre le chevron à sa rotation initiale
+        $('.chevron').removeClass('rotate-chevron');
     });
 });
 
-
-
-</script>
-<script>
-   jQuery(document).ready(function($) {
-    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
-    $('#dropdownMenuButton2').on('click', function(event) {
-        event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-        // Vérifier si le dropdown-content est visible
-        if ($('#dropdownContent2').is(':visible')) {
-            // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-            $('.chevron2').removeClass('rotate-chevron');
-        } else {
-            // Sinon, appliquer la rotation normale au chevron
-            $('.chevron2').addClass('rotate-chevron');
-        }
-        // Toggle de la visibilité du dropdown-content
-        $('#dropdownContent2').toggle();
-        // Toggle de la classe 'opened' sur le bouton
-        $(this).toggleClass('opened');
-    });
-
-    // Fermer le menu lorsque l'utilisateur clique en dehors
-    $(document).on('click', function(event) {
-        // Vérifier si le clic n'est pas sur le bouton ou le contenu du dropdown
-        if (!$(event.target).closest('#dropdownMenuButton2').length && !$(event.target).closest('#dropdownContent2').length) {
-            // Cacher le dropdown-content et retirer la classe 'opened' du bouton
-            $('#dropdownContent2').hide();
-            $('#dropdownMenuButton2').removeClass('opened');
-            // Remettre le chevron à sa rotation initiale
-            $('.chevron2').removeClass('rotate-chevron');
-        }
+// Pour le deuxième menu
+$(document).ready(function($) {
+    $('#dropdownContent2 .dropdown-item').on('click', function() {
+        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
+        $('#dropdownContent2 .dropdown-item').removeClass('selected');
+        $(this).addClass('selected');
+        // Mettre le texte du toggle au choix sélectionné
+        var selectedCategory = $(this).text();
+        $('#dropdownMenuButton2 .button-text').text(selectedCategory); // Modifier uniquement ce bouton
+        // Fermer le menu
+        $('#dropdownContent2').hide();
+        $('#dropdownMenuButton2').removeClass('opened');
+        // Remettre le chevron à sa rotation initiale
+        $('.chevron2').removeClass('rotate-chevron');
     });
 });
 
-
-</script>
-<script>
-   jQuery(document).ready(function($) {
-    // Gérer l'ouverture/fermeture du menu et la rotation du chevron
-    $('#dropdownMenuButton3').on('click', function(event) {
-        event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-        // Vérifier si le dropdown-content est visible
-        if ($('#dropdownContent3').is(':visible')) {
-            // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-            $('.chevron3').removeClass('rotate-chevron');
-        } else {
-            // Sinon, appliquer la rotation normale au chevron
-            $('.chevron3').addClass('rotate-chevron');
-        }
-        // Toggle de la visibilité du dropdown-content
-        $('#dropdownContent3').toggle();
-        // Toggle de la classe 'opened' sur le bouton
-        $(this).toggleClass('opened');
-    });
-
-    // Fermer le menu lorsque l'utilisateur clique en dehors
-    $(document).on('click', function(event) {
-        // Vérifier si le clic n'est pas sur le bouton ou le contenu du dropdown
-        if (!$(event.target).closest('#dropdownMenuButton3').length && !$(event.target).closest('#dropdownContent3').length) {
-            // Cacher le dropdown-content et retirer la classe 'opened' du bouton
-            $('#dropdownContent3').hide();
-            $('#dropdownMenuButton3').removeClass('opened');
-            // Remettre le chevron à sa rotation initiale
-            $('.chevron3').removeClass('rotate-chevron');
-        }
+// Pour le troisième menu
+$(document).ready(function($) {
+    $('#dropdownContent3 .dropdown-item').on('click', function() {
+        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
+        $('#dropdownContent3 .dropdown-item').removeClass('selected');
+        $(this).addClass('selected');
+        // Mettre le texte du toggle au choix sélectionné
+        var selectedCategory = $(this).text();
+        $('#dropdownMenuButton3 .button-text').text(selectedCategory); // Modifier uniquement ce bouton
+        // Fermer le menu
+        $('#dropdownContent3').hide();
+        $('#dropdownMenuButton3').removeClass('opened');
+        // Remettre le chevron à sa rotation initiale
+        $('.chevron3').removeClass('rotate-chevron');
     });
 });
+
 
 </script>
 <script>
@@ -447,7 +434,7 @@ jQuery(document).ready(function($) {
 
 // Fermer le menu déroulant si l'utilisateur clique en dehors
 window.addEventListener("click", function(event) {
-if (!event.target.matches('.dropdown-toggle2')) {
+if (!event.target.matches('.dropdown-toggle')) {
     var dropdowns = document.getElementsByClassName("dropdown-content2");
     for (var i = 0; i < dropdowns.length; i++) {
     var openDropdown = dropdowns[i];
@@ -484,7 +471,7 @@ if (!event.target.matches('.dropdown-toggle2')) {
 
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
-    if (!event.target.matches('.dropdown-toggle3')) {
+    if (!event.target.matches('.dropdown-toggle')) {
       var dropdowns = document.getElementsByClassName("dropdown-content3");
       for (var i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
