@@ -386,27 +386,85 @@ jQuery(document).ready(function($) {
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
   var dropdownMenuButton = document.getElementById("dropdownMenuButton");
   var dropdownContent = document.getElementById("dropdownContent");
 
-  dropdownMenuButton.addEventListener("click", function() {
-    dropdownContent.classList.toggle("show");
-    dropdownMenuButton.classList.toggle("opened");
+  dropdownMenuButton.addEventListener("click", function(event) {
+    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
+    // Vérifier si le dropdown-content est visible
+    if ($('#dropdownContent').is(':visible')) {
+      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
+      $('.chevron').removeClass('rotate-chevron');
+      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
+      var selectedCategory = $('#dropdownContent .selected').text();
+      $('#dropdownMenuButton .button-text').text(selectedCategory !== "" ? selectedCategory : "Catégories");
+    } else {
+      // Sinon, appliquer la rotation normale au chevron
+      $('.chevron').addClass('rotate-chevron');
+      // Mettre le texte du toggle à "Catégories"
+      $('#dropdownMenuButton .button-text').text("Catégories");
+    }
+    // Toggle de la visibilité du dropdown-content
+    $('#dropdownContent').toggle();
+    // Toggle de la classe 'opened' sur le bouton
+    $(this).toggleClass('opened');
   });
 
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
-    if (!event.target.matches('.dropdown-toggle')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      for (var i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        var dropdownButton = openDropdown.previousElementSibling;
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-          dropdownButton.classList.remove('opened');
-        }
-      }
+    if (!event.target.closest('.dropdown-toggle')) {
+      $('#dropdownContent').hide(); // Cacher le menu déroulant
+      $('#dropdownMenuButton').removeClass('opened'); // Retirer la classe 'opened' du bouton
+      $('.chevron').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
+    }
+  });
+
+  // Ajouter un écouteur d'événement pour les filtres
+  var filters = document.querySelectorAll('.filter');
+  filters.forEach(function(filter) {
+    filter.addEventListener('click', function() {
+      var value = this.getAttribute('data-value');
+      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
+      console.log("Filtrage avec la valeur :", value);
+    });
+  });
+});
+
+
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  var dropdownMenuButton = document.getElementById("dropdownMenuButton2");
+  var dropdownContent = document.getElementById("dropdownContent2");
+
+  dropdownMenuButton.addEventListener("click", function(event) {
+    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
+    // Vérifier si le dropdown-content est visible
+    if ($('#dropdownContent2').is(':visible')) {
+      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
+      $('.chevron2').removeClass('rotate-chevron');
+      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
+      var selectedCategory = $('#dropdownContent2 .selected').text();
+      $('#dropdownMenuButton2 .button-text').text(selectedCategory !== "" ? selectedCategory : "FORMATS");
+    } else {
+      // Sinon, appliquer la rotation normale au chevron
+      $('.chevron2').addClass('rotate-chevron');
+      // Mettre le texte du toggle à "Catégories"
+      $('#dropdownMenuButton2 .button-text').text("FORMATS");
+    }
+    // Toggle de la visibilité du dropdown-content
+    $('#dropdownContent2').toggle();
+    // Toggle de la classe 'opened' sur le bouton
+    $(this).toggleClass('opened');
+  });
+
+  // Fermer le menu déroulant si l'utilisateur clique en dehors
+  window.addEventListener("click", function(event) {
+    if (!event.target.closest('.dropdown-toggle')) {
+      $('#dropdownContent2').hide(); // Cacher le menu déroulant
+      $('#dropdownMenuButton2').removeClass('opened'); // Retirer la classe 'opened' du bouton
+      $('.chevron2').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
     }
   });
 
@@ -423,64 +481,37 @@ jQuery(document).ready(function($) {
 
 </script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    var dropdownMenuButton = document.getElementById("dropdownMenuButton2");
-    var dropdownContent = document.getElementById("dropdownContent2");
-
-    dropdownMenuButton.addEventListener("click", function() {
-    dropdownContent.classList.toggle("show");
-    dropdownMenuButton.classList.toggle("opened");
-});
-
-// Fermer le menu déroulant si l'utilisateur clique en dehors
-window.addEventListener("click", function(event) {
-if (!event.target.matches('.dropdown-toggle')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content2");
-    for (var i = 0; i < dropdowns.length; i++) {
-    var openDropdown = dropdowns[i];
-    var dropdownButton = openDropdown.previousElementSibling;
-    if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-        dropdownButton.classList.remove('opened');
-    }
-    }
-}
-});
-
-  // Ajouter un écouteur d'événement pour les filtres
-  var filters = document.querySelectorAll('.filter');
-  filters.forEach(function(filter) {
-    filter.addEventListener('click', function() {
-      var value = this.getAttribute('data-value');
-      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
-      console.log("Filtrage avec la valeur :", value);
-    });
-  });
-});
-
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
   var dropdownMenuButton = document.getElementById("dropdownMenuButton3");
   var dropdownContent = document.getElementById("dropdownContent3");
 
-  dropdownMenuButton.addEventListener("click", function() {
-    dropdownContent.classList.toggle("show");
-    dropdownMenuButton.classList.toggle("opened");
+  dropdownMenuButton.addEventListener("click", function(event) {
+    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
+    // Vérifier si le dropdown-content est visible
+    if ($('#dropdownContent3').is(':visible')) {
+      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
+      $('.chevron3').removeClass('rotate-chevron');
+      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
+      var selectedCategory = $('#dropdownContent3 .selected').text();
+      $('#dropdownMenuButton3 .button-text').text(selectedCategory !== "" ? selectedCategory : "TRIER PAR");
+    } else {
+      // Sinon, appliquer la rotation normale au chevron
+      $('.chevron3').addClass('rotate-chevron');
+      // Mettre le texte du toggle à "Catégories"
+      $('#dropdownMenuButton3 .button-text').text("TRIER PAR");
+    }
+    // Toggle de la visibilité du dropdown-content
+    $('#dropdownContent3').toggle();
+    // Toggle de la classe 'opened' sur le bouton
+    $(this).toggleClass('opened');
   });
 
   // Fermer le menu déroulant si l'utilisateur clique en dehors
   window.addEventListener("click", function(event) {
-    if (!event.target.matches('.dropdown-toggle')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content3");
-      for (var i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        var dropdownButton = openDropdown.previousElementSibling;
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-          dropdownButton.classList.remove('opened');
-        }
-      }
+    if (!event.target.closest('.dropdown-toggle')) {
+      $('#dropdownContent3').hide(); // Cacher le menu déroulant
+      $('#dropdownMenuButton3').removeClass('opened'); // Retirer la classe 'opened' du bouton
+      $('.chevron3').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
     }
   });
 
@@ -494,6 +525,7 @@ if (!event.target.matches('.dropdown-toggle')) {
     });
   });
 });
+
 
 </script>
 <script>
