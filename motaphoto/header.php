@@ -122,7 +122,7 @@
                 <img class="logo" src="<?php echo get_stylesheet_directory_uri() . '/assets/Logo.png'; ?>" alt="Logo">
             </div>
             <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars menu-icon"></i> <!-- Ajout de la classe menu-icon -->
             </div>
             <ul id="menu-primary-menu" class="primary-menu">
                 <?php    
@@ -134,7 +134,7 @@
                         }
                     }
                 ?>
-                <li class="menu-item"><a id="openModalLink" href="#">Contact</a></li> <!-- lien qui ouvre la modale  -->
+                <li class="menu-item"><a id="openModalLink" href="#" class="contact-link">Contact</a></li> <!-- lien qui ouvre la modale  -->
             </ul>
             <div class="burger-menu">
                 <?php    
@@ -146,7 +146,7 @@
                             echo '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
                         }
                                // Ajout du lien à la modal dans le menu burger
-            echo '<a id="openModalLink" href="#">Contact</a>';
+            echo '<a id="openModalLink" href="#" class="contact-link">Contact</a>';
                         echo '</div>';
                     }
                 ?>
@@ -159,6 +159,12 @@
         jQuery(document).ready(function($) {
             $('.menu-toggle').click(function() {
                 $('.burger-menu').slideToggle();
+                $('.menu-icon').toggleClass('fa-bars fa-times'); // Changer l'icône du menu burger
+            });
+
+            // Réinitialiser l'icône lorsque la modale de contact est ouverte
+            $('.contact-link').click(function() {
+                $('.menu-icon').removeClass('fa-times').addClass('fa-bars');
             });
 
             // Ajouter une classe pour contrôler l'affichage du menu burger
@@ -178,9 +184,6 @@
             $(window).resize(toggleMenu);
         });
     </script>
-
-
-
 
     <?php wp_footer(); ?>
 </body>
