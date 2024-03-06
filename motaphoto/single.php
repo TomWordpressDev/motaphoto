@@ -265,27 +265,7 @@ if ($additional_images_query->have_posts()) {
 
 <?php get_footer(); ?>
 
-<script>
-jQuery(document).ready(function($) {
-    // Ouvrir la modal lorsque le bouton est cliqué
-    $('#openModalButton').click(function(e) {
-        e.preventDefault();
-        $('#contactModal').fadeIn();
-        console.log("La modal est ouverte.");
-    });
 
-    // Fermer la modale lorsque l'utilisateur clique en dehors d'elle
-    $(document).click(function(event) {
-        if (!$(event.target).closest('.modal-content, #openModalButton').length) {
-            $('#contactModal').fadeOut();
-            console.log("La modal est fermée.");
-        }
-    });
-});
-
-
-
-</script>
 
 <!-- Initialisez le carousel dans votre script JavaScript -->
 <script>

@@ -134,6 +134,7 @@
                         }
                     }
                 ?>
+                <li class="menu-item"><a id="openModalLink" href="#">Contact</a></li> <!-- lien qui ouvre la modale  -->
             </ul>
             <div class="burger-menu">
                 <?php    
@@ -144,6 +145,8 @@
                         foreach ($menu_items as $item) {
                             echo '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
                         }
+                               // Ajout du lien à la modal dans le menu burger
+            echo '<a id="openModalLink" href="#">Contact</a>';
                         echo '</div>';
                     }
                 ?>
@@ -175,6 +178,9 @@
             $(window).resize(toggleMenu);
         });
     </script>
+
+
+
 
     <?php wp_footer(); ?>
 </body>
