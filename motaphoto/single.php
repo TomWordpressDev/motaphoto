@@ -193,9 +193,7 @@
                             </div>
                         </section>
                   
-                        <?php
-                        // Afficher les images supplémentaires
-                       // Afficher les images supplémentaires
+<?php
 // Afficher les images supplémentaires
 if ($additional_images_query->have_posts()) {
     echo '<h3>Vous aimerez AUSSI</h3>';
@@ -264,8 +262,6 @@ if ($additional_images_query->have_posts()) {
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
-
-
 
 <!-- Initialisez le carousel dans votre script JavaScript -->
 <script>

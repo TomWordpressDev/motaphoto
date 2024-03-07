@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Modèle de page Vie privée
+Template Name: Modèle de la page Vie privée
 */
 ?>
 <?php get_header(); ?>

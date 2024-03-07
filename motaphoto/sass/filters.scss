@@ -32,7 +32,6 @@
 .filter {
   padding: 0.6875rem 1.5rem; 
   color: var(--Black, #313144);
-
   /* Drop Menu Menu */
   font-family: Poppins;
   font-size: 0.75rem;
@@ -83,13 +82,10 @@
   background: var(--White, #FFF); 
   z-index: 1;
   width: 16.25rem;
-
 }
 
-
 .show {
-  display: block;
-  
+  display: block;  
 }
 
 .dropdown-toggle {
@@ -101,6 +97,7 @@
 .arrow {
     margin-left: 5px; /* Ajustez selon votre préférence */
 }
+
 .button-text, .dropdown-toggle{
   color: var(--Black, #313144);
   font-family: Poppins;
@@ -116,7 +113,6 @@
   transform: rotate(180deg);
   transition: transform 0.3s ease; /* Animation de transition */
 }
-
 
 
 @media screen and (max-width: 768px) {

@@ -21,16 +21,6 @@
     height: 8.875rem !important; /* Modifier selon votre besoin */ 
 }
 
-
-
-/* Filtres */
-
-
-/* Changement de couleur au survol */
-
-/* CSS pour changer la couleur lors du survol des options dans un menu déroulant */
-
-
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
@@ -96,7 +86,6 @@
 }
 
 
-
 @media screen and (max-width: 768px) {
    
     .hero-header{    
@@ -129,23 +118,7 @@
     .header-title{
        
         height: 4.875rem !important; /* Modifier selon votre besoin */ 
-    }
-    .footer{
-        height: 12.9375rem !important;
-        text-align: center;
-        justify-content: center;
-    }
-   
-    .footer ul{
-        display: flex;
-        margin-top: 1.5rem !important;
-        flex-direction: column !important;
-    }
-    .footer ul li{
-        margin-bottom: 1.5rem !important;
-        
-    }
-  
+    }  
 }
 
 
@@ -182,21 +155,5 @@
     .header-title{
        
         height: 1.875rem !important; /* Modifier selon votre besoin */ 
-    }
-    .footer{
-        height: 12.9375rem !important;
-        text-align: center;
-        justify-content: center;
-    }
-   
-    .footer ul{
-        display: flex;
-        margin-top: 1.5rem !important;
-        flex-direction: column !important;
-    }
-    .footer ul li{
-        margin-bottom: 1.5rem !important;
-        
-    }
-  
+    }  
 }

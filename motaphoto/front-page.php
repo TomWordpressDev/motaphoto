@@ -27,9 +27,6 @@ $formats = get_terms('format');
             </div>
         </div>
     </div>
-
-
-
     <div class="dropdown" id="filter-format">
         <button class="dropdown-toggle" id="dropdownMenuButton2">
             <span class="button-text">Formats</span>
@@ -162,47 +159,44 @@ $formats = get_terms('format');
                     ?>
                 </div>
             </div>
-
-            <button id="load-more">Charger plus</button>
-            
+            <button id="load-more">Charger plus</button>            
     </main>
-
-
 <?php get_footer(); ?>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+$(document).ready(function() {
     $('.full-view').fancybox({
-        // General Options
-        closeExisting: false,   // Close all existing fancybox instances when opening a new one
-        loop: true,             // Enable looping through galleries
-        gutter: 50,             // Space between slides in pixels
-        keyboard: true,         // Enable keyboard navigation
-        arrows: true,           // Display navigation arrows
-        infobar: true,          // Display information bar
-        smallBtn: false,        // Display small close button
-        toolbar: true,          // Display toolbar
-        buttons: ['thumbs', 'close'], // Customize toolbar buttons
+        // Options générales
+        closeExisting: false,   // Fermer toutes les instances de fancybox existantes lors de l'ouverture d'une nouvelle
+        loop: true,             // Activer la boucle à travers les galeries
+        gutter: 50,             // Espace entre les diapositives en pixels
+        keyboard: true,         // Activer la navigation au clavier
+        arrows: true,           // Afficher les flèches de navigation
+        infobar: true,          // Afficher la barre d'information
+        smallBtn: false,        // Afficher le petit bouton de fermeture
+        toolbar: true,          // Afficher la barre d'outils
+        buttons: ['thumbs', 'close'], // Personnaliser les boutons de la barre d'outils
 
-        // Animation Options
-        animationEffect: 'fade',        // Transition effect
-        animationDuration: 500,         // Transition duration in milliseconds
-        transitionEffect: 'fade',       // Transition effect between slides
-        transitionDuration: 500,        // Transition duration between slides in milliseconds
-        slideClass: 'fancybox-slide',   // Custom CSS class for slides
-        baseClass: 'fancybox-container', // Custom CSS class for fancybox container
+        // Options d'animation
+        animationEffect: 'fade',        // Effet de transition
+        animationDuration: 500,         // Durée de transition en millisecondes
+        transitionEffect: 'fade',       // Effet de transition entre les diapositives
+        transitionDuration: 500,        // Durée de transition entre les diapositives en millisecondes
+        slideClass: 'fancybox-slide',   // Classe CSS personnalisée pour les diapositives
+        baseClass: 'fancybox-container', // Classe CSS personnalisée pour le conteneur fancybox
 
-        // Thumbnail Options
+        // Options de vignettes
         thumbs: {
-            autoStart: true,   // Automatically start thumbnail display
-            hideOnClose: true, // Hide thumbnails when closing fancybox
-            axis: 'y'          // Thumbnail display direction ('x' for horizontal, 'y' for vertical)
+            autoStart: true,   // Démarrage automatique de l'affichage des vignettes
+            hideOnClose: true, // Masquer les vignettes lors de la fermeture de fancybox
+            axis: 'y'          // Direction d'affichage des vignettes ('x' pour horizontal, 'y' pour vertical)
         },
 
-       
+        // Modèles de boutons
         btnTpl: {
             arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
             '<div class="container-precedentes">'+
@@ -219,334 +213,26 @@ $formats = get_terms('format');
                         '</button>',
         },
 
-        // Image Options
-        protect: true,           // Prevent downloading images
-        hideScrollbar: false,    // Hide vertical scrollbar
-        clickContent: 'close',   // Action to perform on clicking content area ('close' or 'next')
+        // Options d'image
+        protect: true,           // Empêcher le téléchargement des images
+        hideScrollbar: false,    // Masquer la barre de défilement vertical
+        clickContent: 'close',   // Action à effectuer lors du clic sur la zone de contenu ('close' ou 'next')
 
-        // Other Options
-        autoFocus: true,         // Autofocus on first visible element when opening fancybox
-        backFocus: true,         // Restore focus to the trigger element when closing fancybox
-        trapFocus: true,         // Prevent tabbing out of fancybox
+        // Autres options
+        autoFocus: true,         // Mise au point automatique sur le premier élément visible lors de l'ouverture de fancybox
+        backFocus: true,         // Restaurer le focus sur l'élément déclencheur lors de la fermeture de fancybox
+        trapFocus: true,         // Empêcher de sortir de fancybox en tabulant
         touch: {
-            vertical: false,     // Allow vertical swipe
-            momentum: true       // Enable momentum scrolling
+            vertical: false,     // Autoriser le glissement vertical
+            momentum: true       // Activer le défilement par inertie
         },
-        hash: false              // Enable URL hash navigation
-    });
-});
-
-</script>
-
-<script>
-
-jQuery(document).ready(function($) {
-    // Fonction pour appliquer la sélection des filtres à tous les éléments
-    function applyFilters() {
-        $('.filter').each(function() {
-            var value = $(this).data('value');
-            if ($(this).hasClass('selected')) {
-                $(this).css({
-                    'background-color': '#E00000',
-                    'color': '#fff'
-                });
-            } else {
-                $(this).css({
-                    'background-color': '#fff',
-                    'color': '#000'
-                });
-            }
-        });
-
-        // Filtrer les éléments en fonction des filtres sélectionnés
-        var selectedValues = $('.filter.selected').map(function() {
-            return $(this).data('value');
-        }).get();
-
-        if (selectedValues.length > 0) {
-            $('.item').hide(); // Masquer tous les éléments
-            for (var i = 0; i < selectedValues.length; i++) {
-                var value = selectedValues[i];
-                $('.item.' + value).show(); // Afficher les éléments correspondant à chaque filtre sélectionné
-            }
-        } else {
-            $('.item').show(); // Si aucun filtre n'est sélectionné, afficher tous les éléments
-        }
-    }
-
-    // Gérer le clic sur un filtre
-    $('.filter').on('click', function() {
-        var value = $(this).data('value');
-        
-        // Désélectionner tous les autres filtres du même groupe
-        var group = $(this).parent().attr('id');
-        $('#' + group + ' .filter').removeClass('selected');
-
-        // Sélectionner le filtre actuel
-        $(this).addClass('selected');
-
-        // Appliquer les filtres
-        applyFilters();
-    });
-
-    // Initialiser les filtres au chargement de la page
-    applyFilters();
-});
-
-
-</script>
-
-<script>
-// Pour le premier menu
-$(document).ready(function($) {
-    $('#dropdownContent .dropdown-item').on('click', function() {
-        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
-        $('#dropdownContent .dropdown-item').removeClass('selected');
-        $(this).addClass('selected');
-        // Mettre le texte du toggle au choix sélectionné
-        var selectedCategory = $(this).text();
-        $('#dropdownMenuButton .button-text').text(selectedCategory); // Modifier uniquement ce bouton
-        // Fermer le menu
-        $('#dropdownContent').hide();
-        $('#dropdownMenuButton').removeClass('opened');
-        // Remettre le chevron à sa rotation initiale
-        $('.chevron').removeClass('rotate-chevron');
-    });
-});
-
-// Pour le deuxième menu
-$(document).ready(function($) {
-    $('#dropdownContent2 .dropdown-item').on('click', function() {
-        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
-        $('#dropdownContent2 .dropdown-item').removeClass('selected');
-        $(this).addClass('selected');
-        // Mettre le texte du toggle au choix sélectionné
-        var selectedCategory = $(this).text();
-        $('#dropdownMenuButton2 .button-text').text(selectedCategory); // Modifier uniquement ce bouton
-        // Fermer le menu
-        $('#dropdownContent2').hide();
-        $('#dropdownMenuButton2').removeClass('opened');
-        // Remettre le chevron à sa rotation initiale
-        $('.chevron2').removeClass('rotate-chevron');
-    });
-});
-
-// Pour le troisième menu
-$(document).ready(function($) {
-    $('#dropdownContent3 .dropdown-item').on('click', function() {
-        // Retirer la classe 'selected' des autres éléments et l'ajouter à l'élément sélectionné
-        $('#dropdownContent3 .dropdown-item').removeClass('selected');
-        $(this).addClass('selected');
-        // Mettre le texte du toggle au choix sélectionné
-        var selectedCategory = $(this).text();
-        $('#dropdownMenuButton3 .button-text').text(selectedCategory); // Modifier uniquement ce bouton
-        // Fermer le menu
-        $('#dropdownContent3').hide();
-        $('#dropdownMenuButton3').removeClass('opened');
-        // Remettre le chevron à sa rotation initiale
-        $('.chevron3').removeClass('rotate-chevron');
-    });
-});
-
-
-</script>
-<script>
-jQuery(document).ready(function($) {
-    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
-    $('#categorie').on('change', function() {
-        var selectedCategory = $(this).find('option:selected').text();
-        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
-        $('#dropdownMenuButton .button-text').text(selectedCategory);
-        $('#dropdownMenuButton .dropdown-image').attr('src', chevronImage);
-    });
-});
-
-</script>
-<script>
-jQuery(document).ready(function($) {
-    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
-    $('#format').on('change', function() {
-        var selectedCategory = $(this).find('option:selected').text();
-        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
-        $('#dropdownMenuButton2 .button-text').text(selectedCategory);
-        $('#dropdownMenuButton2 .dropdown-image').attr('src', chevronImage);
-    });
-});
-</script>
-<script>
-jQuery(document).ready(function($) {
-    // Mettre à jour le texte du toggle lorsqu'une catégorie est sélectionnée
-    $('#annee').on('change', function() {
-        var selectedCategory = $(this).find('option:selected').text();
-        var chevronImage = '<?php echo get_stylesheet_directory_uri() . '/assets/chevron.png'; ?>'; // Chemin de l'image du chevron
-        $('#dropdownMenuButton3 .button-text').text(selectedCategory);
-        $('#dropdownMenuButton3 .dropdown-image').attr('src', chevronImage);
+        hash: false              // Activer la navigation par hachage d'URL
     });
 });
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var dropdownMenuButton = document.getElementById("dropdownMenuButton");
-  var dropdownContent = document.getElementById("dropdownContent");
-
-  dropdownMenuButton.addEventListener("click", function(event) {
-    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-    // Vérifier si le dropdown-content est visible
-    if ($('#dropdownContent').is(':visible')) {
-      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-      $('.chevron').removeClass('rotate-chevron');
-      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
-      var selectedCategory = $('#dropdownContent .selected').text();
-      $('#dropdownMenuButton .button-text').text(selectedCategory !== "" ? selectedCategory : "Catégories");
-    } else {
-      // Sinon, appliquer la rotation normale au chevron
-      $('.chevron').addClass('rotate-chevron');
-      // Mettre le texte du toggle à "Catégories"
-      $('#dropdownMenuButton .button-text').text("Catégories");
-    }
-    // Toggle de la visibilité du dropdown-content
-    $('#dropdownContent').toggle();
-    // Toggle de la classe 'opened' sur le bouton
-    $(this).toggleClass('opened');
-  });
-
-  // Fermer le menu déroulant si l'utilisateur clique en dehors
-  window.addEventListener("click", function(event) {
-    if (!event.target.closest('.dropdown-toggle')) {
-      // Vérifier si un choix a été fait
-      var selectedCategory = $('#dropdownContent .selected').text();
-      if (selectedCategory !== "") {
-        // Afficher le choix sélectionné dans le bouton
-        $('#dropdownMenuButton .button-text').text(selectedCategory);
-      }
-      $('#dropdownContent').hide(); // Cacher le menu déroulant
-      $('#dropdownMenuButton').removeClass('opened'); // Retirer la classe 'opened' du bouton
-      $('.chevron').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
-    }
-  });
-
-  // Ajouter un écouteur d'événement pour les filtres
-  var filters = document.querySelectorAll('.filter');
-  filters.forEach(function(filter) {
-    filter.addEventListener('click', function() {
-      var value = this.getAttribute('data-value');
-      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
-      console.log("Filtrage avec la valeur :", value);
-    });
-  });
-});
-
-
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var dropdownMenuButton = document.getElementById("dropdownMenuButton2");
-  var dropdownContent = document.getElementById("dropdownContent2");
-
-  dropdownMenuButton.addEventListener("click", function(event) {
-    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-    // Vérifier si le dropdown-content est visible
-    if ($('#dropdownContent2').is(':visible')) {
-      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-      $('.chevron2').removeClass('rotate-chevron');
-      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
-      var selectedCategory = $('#dropdownContent2 .selected').text();
-      $('#dropdownMenuButton2 .button-text').text(selectedCategory !== "" ? selectedCategory : "FORMATS");
-    } else {
-      // Sinon, appliquer la rotation normale au chevron
-      $('.chevron2').addClass('rotate-chevron');
-      // Mettre le texte du toggle à "Catégories"
-      $('#dropdownMenuButton2 .button-text').text("FORMATS");
-    }
-    // Toggle de la visibilité du dropdown-content
-    $('#dropdownContent2').toggle();
-    // Toggle de la classe 'opened' sur le bouton
-    $(this).toggleClass('opened');
-  });
-
-  // Fermer le menu déroulant si l'utilisateur clique en dehors
-  window.addEventListener("click", function(event) {
-    if (!event.target.closest('.dropdown-toggle')) {
-      // Vérifier si un choix a été fait
-      var selectedCategory = $('#dropdownContent2 .selected').text();
-      if (selectedCategory !== "") {
-        // Afficher le choix sélectionné dans le bouton
-        $('#dropdownMenuButton2 .button-text').text(selectedCategory);
-      }
-      $('#dropdownContent2').hide(); // Cacher le menu déroulant
-      $('#dropdownMenuButton2').removeClass('opened'); // Retirer la classe 'opened' du bouton
-      $('.chevron2').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
-    }
-  });
-  // Ajouter un écouteur d'événement pour les filtres
-  var filters = document.querySelectorAll('.filter');
-  filters.forEach(function(filter) {
-    filter.addEventListener('click', function() {
-      var value = this.getAttribute('data-value');
-      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
-      console.log("Filtrage avec la valeur :", value);
-    });
-  });
-});
-
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var dropdownMenuButton = document.getElementById("dropdownMenuButton3");
-  var dropdownContent = document.getElementById("dropdownContent3");
-
-  dropdownMenuButton.addEventListener("click", function(event) {
-    event.stopPropagation(); // Empêcher la propagation du clic pour éviter la fermeture du menu lors du clic sur le bouton
-    // Vérifier si le dropdown-content est visible
-    if ($('#dropdownContent3').is(':visible')) {
-      // Si le dropdown-content est visible, remettre le chevron à sa rotation initiale
-      $('.chevron3').removeClass('rotate-chevron');
-      // Mettre le texte du toggle au choix sélectionné ou à "Catégories" si aucun choix n'a été fait
-      var selectedCategory = $('#dropdownContent3 .selected').text();
-      $('#dropdownMenuButton3 .button-text').text(selectedCategory !== "" ? selectedCategory : "TRIER PAR");
-    } else {
-      // Sinon, appliquer la rotation normale au chevron
-      $('.chevron3').addClass('rotate-chevron');
-      // Mettre le texte du toggle à "Catégories"
-      $('#dropdownMenuButton3 .button-text').text("TRIER PAR");
-    }
-    // Toggle de la visibilité du dropdown-content
-    $('#dropdownContent3').toggle();
-    // Toggle de la classe 'opened' sur le bouton
-    $(this).toggleClass('opened');
-  });
-
-  // Fermer le menu déroulant si l'utilisateur clique en dehors
-  window.addEventListener("click", function(event) {
-    if (!event.target.closest('.dropdown-toggle')) {
-      // Vérifier si un choix a été fait
-      var selectedCategory = $('#dropdownContent3 .selected').text();
-      if (selectedCategory !== "") {
-        // Afficher le choix sélectionné dans le bouton
-        $('#dropdownMenuButton3 .button-text').text(selectedCategory);
-      }
-      $('#dropdownContent3').hide(); // Cacher le menu déroulant
-      $('#dropdownMenuButton3').removeClass('opened'); // Retirer la classe 'opened' du bouton
-      $('.chevron3').removeClass('rotate-chevron'); // Remettre le chevron à sa rotation initiale
-    }
-  });
-
-  // Ajouter un écouteur d'événement pour les filtres
-  var filters = document.querySelectorAll('.filter');
-  filters.forEach(function(filter) {
-    filter.addEventListener('click', function() {
-      var value = this.getAttribute('data-value');
-      // Mettre en œuvre le filtrage en fonction de la valeur sélectionnée
-      console.log("Filtrage avec la valeur :", value);
-    });
-  });
-});
-
-
-</script>
-<script>
-    // Synchronisation des filtres select et div
+// Synchronisation des filtres select et div
 $('.filter').on('click', function() {
     var value = $(this).data('value');
     var id = $(this).parent().attr('id').replace('filter-', ''); // Récupérer l'ID du filtre
@@ -556,13 +242,13 @@ $('.filter').on('click', function() {
 </script>
 
 <script>
-    jQuery(document).ready(function($) {
-        // Réinitialiser les valeurs par défaut des sélecteurs
-        $('#categorie').val('all');
-        $('#format').val('all');
-        $('#annee').val('');
+jQuery(document).ready(function($) {
+// Réinitialiser les valeurs par défaut des sélecteurs
+$('#categorie').val('all');
+$('#format').val('all');
+$('#annee').val('');
 
-        // Fonction pour filtrer les images
+    
  // Fonction pour filtrer les images
 function filtrerImages() {
     var categorie = $('#categorie').val();
@@ -635,30 +321,22 @@ function filtrerImages() {
                     annee: annee
                 },
                 success: function(response) {
-    if (response != '') {
-        $('.grid').append(response);
-        offset += 8;
-        // Réinitialiser Fancybox pour les nouvelles images
-        $('.grid item').each(function() {
-            $(this).attr('data-fancybox', 'gallery');
-        });
-        // Mise à jour de l'attribut data-fancybox pour les nouvelles images
-        $('.grid item').fancybox({
-            // Options éventuelles de Fancybox
-        });
-    } else {
-        $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
-    }
-}
-
-
-
-
-            });
+                if (response != '') {
+                    $('.grid').append(response);
+                    offset += 8;
+                    // Réinitialiser Fancybox pour les nouvelles images
+                    $('.grid item').each(function() {
+                        $(this).attr('data-fancybox', 'gallery');
+                    });
+                    // Mise à jour de l'attribut data-fancybox pour les nouvelles images
+                    $('.grid item').fancybox({
+                        // Options éventuelles de Fancybox
+                    });
+                } else {
+                    $('#load-more').hide(); // Masquer le bouton "Charger plus" s'il n'y a pas de nouvelles images disponibles
+                }
+            }
         });
     });
-
-
-
-    
+});    
 </script>
