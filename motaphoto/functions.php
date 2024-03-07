@@ -117,13 +117,17 @@ function load_more_images() {
     $format = isset($_POST['format']) ? $_POST['format'] : 'all';
     $annee = isset($_POST['annee']) ? $_POST['annee'] : '';
 
+    // Récupérer les IDs des publications déjà chargées
+    $excluded_posts = isset($_POST['excluded_posts']) ? $_POST['excluded_posts'] : array();
+
     // Préparation des arguments de la requête WP_Query
     $args = array(
         'post_type' => 'photos',
         'posts_per_page' => 8,
         'meta_key' => 'annee',
         'orderby' => 'meta_value_num',
-        'order' => 'ASC'
+        'order' => 'ASC',
+        'post__not_in' => $excluded_posts, // Exclure les publications déjà chargées
     );
 
     // Filtrage par catégorie si une catégorie est sélectionnée
@@ -165,6 +169,11 @@ function load_more_images() {
 
     // Mettre à jour l'offset pour la prochaine requête
     $_POST['offset'] = $new_offset;
+
+    // Ajouter les IDs des publications déjà chargées
+    foreach ($query->posts as $post) {
+        $excluded_posts[] = $post->ID;
+    }
 
     // Ajouter un argument d'offset à la requête
     $args['offset'] = $offset;
@@ -214,6 +223,7 @@ function load_more_images() {
 
     wp_die();
 }
+
 
 function get_random_gallery_image_url() {
     $args = array(
