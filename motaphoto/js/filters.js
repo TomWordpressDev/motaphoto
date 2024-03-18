@@ -1,3 +1,19 @@
+
+// Fonction pour afficher les images
+function displayImages(images) {
+  // Effacer tout contenu précédent
+  $('.gallery').empty();
+
+  // Parcourir les données des images et les afficher
+  images.forEach(function(image) {
+      var html = '<div class="item">';
+      html += '<img src="' + image.thumbnail + '" alt="' + image.title + '">';
+      // Ajoutez d'autres éléments HTML nécessaires pour chaque image
+      html += '</div>';
+      $('.gallery').append(html);
+  });
+}
+
 jQuery(document).ready(function($) {
     // Fonction pour appliquer la sélection des filtres à tous les éléments
     function applyFilters() {

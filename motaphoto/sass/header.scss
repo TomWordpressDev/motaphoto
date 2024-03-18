@@ -32,7 +32,15 @@
     text-transform: uppercase; 
     text-decoration: none;
 }
-
+#menu-primary-menu a:hover{  
+    color: #000;
+    font-family: "Space Mono";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase; 
+}
 .logo{
     position: absolute;
     width: 216px;
@@ -53,6 +61,18 @@
 
 .burger-menu {
     display: none; /* Masquer le menu burger par défaut */
+    margin-top: 20px;
+}
+.burger-menu a:hover{
+    background-color: #E00000 !important;
+}
+
+@media screen and (max-width: 375px) {
+    .menu-header {
+        background: #E00000;
+        height: 30rem !important;
+        padding-top: 10.19rem !important;
+    }
 }
 
 @media screen and (max-width: 768px) {
