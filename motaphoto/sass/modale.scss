@@ -19,17 +19,37 @@
 }
 
 /* Contenu de la modale */
-.modal-content {    
+.modal-content {
     margin: 15% auto;
- 
     width: 37.3125rem;
-    height: 48.0625rem; 
+    height: 48.0625rem;
     position: relative;
     border: 5px solid #000;
-    background: #FFF; 
- 
-}
+    background: #FFF;
 
+    form {
+      margin-top: 10.62rem;
+      margin-left: 10.31rem;
+    }
+
+    label {
+      color: #313144;
+      font-family: Poppins;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 16.4375rem;
+      height: 2.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #B8BBC2;
+      background: #FFF;
+    }
+}
 /* Bouton de fermeture */
 .close {
     color: #aaa;
@@ -39,48 +59,12 @@
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-}
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/* Formulaire */
-.modal-content form{
-    margin-top: 10.62rem;
-    margin-left: 10.31rem;
-   
-}
-
-.modal-content label{
-    color: #313144;
-    font-family: Poppins;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    text-transform: uppercase;
-}
-
-.modal-content input{
-    width: 16.4375rem;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    border: 1px solid #B8BBC2;
-    background: #FFF; 
-}
-
-.modal-content textarea{
-    width: 16.4375rem;
-    height: 13.125rem;
-    border-radius: 0.5rem;
-    border: 1px solid #B8BBC2;
-    background: #FFF;
-    resize: none;
+    &:hover, &:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
 }
 
 .wpcf7-form-control.wpcf7-submit.has-spinner{
@@ -126,8 +110,7 @@
         align-items: center;
         margin-left: 3rem !important;
    }
-   .wpcf7-not-valid-tip{
-    
+   .wpcf7-not-valid-tip{    
     font-family: "Space Mono";
     font-size: 0.45rem;
     font-style: normal;
@@ -135,8 +118,7 @@
     line-height: normal;
    }
    .modal-content input{
-        width: 80%; /* Spécifiez la largeur souhaitée */
-        /* Autres styles... */
+        width: 80%; 
         justify-content: center;
     }
     .modal-content textarea{

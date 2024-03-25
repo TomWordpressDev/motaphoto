@@ -10,37 +10,6 @@
     position: relative; 
 }
 
-#menu-primary-menu{
-    display: flex;
-    flex-direction: row;
-    position: absolute;
-    right: 6.19rem;
-    gap: 2.81rem;
-    list-style: none;
-    justify-content: center;
-    align-items: center;   
-    top: 10px;  
-}
-
-#menu-primary-menu a{  
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-transform: uppercase; 
-    text-decoration: none;
-}
-#menu-primary-menu a:hover{  
-    color: #000;
-    font-family: "Space Mono";
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: uppercase; 
-}
 .logo{
     position: absolute;
     width: 216px;
@@ -48,6 +17,34 @@
     top: 1.94rem;
     left: 146px;
 }
+
+#menu-primary-menu {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 6.19rem;
+    gap: 2.81rem;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+  
+    a {
+      color: #000;
+      font-family: "Space Mono";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      text-decoration: none;
+  
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
+
 
 /* CSS pour le menu burger */
 .menu-toggle {
@@ -67,10 +64,36 @@
     background-color: #E00000 !important;
 }
 
+.header-open-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; /* Vous pouvez ajuster la couleur de fond selon vos préférences */
+    z-index: 9999;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.8s ease-in-out;
+}
+
+.header-open-menu.open {
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.close-icon {
+    position: absolute;
+    top: 40px; 
+    right: 20px;
+    cursor: pointer;
+}
+
+
 @media screen and (max-width: 375px) {
     .menu-header {
         background: #E00000;
-        height: 30rem !important;
+        height: 28rem !important;
         padding-top: 10.19rem !important;
     }
 }
@@ -81,11 +104,11 @@
     }
 
     .menu-toggle {
-        display: block; /* Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px */
-    }
-
-    .menu-toggle i {
-        font-size: 1.71344rem; /* Ajustez la taille selon vos préférences */
+        display: block; // Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px
+    
+        i {
+          font-size: 1.71344rem; // Ajustez la taille selon vos préférences
+        }
     }
 
     #menu-primary-menu {
@@ -93,41 +116,41 @@
     }
 
     .burger-menu {
-        display: block; /* Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px */
+        display: block; // Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px
         position: absolute;
-        top: 60px; /* Ajustez la position verticale selon votre mise en page */
+        top: 60px; // Ajustez la position verticale selon votre mise en page
         left: 0;
         background-color: #ffffff;
         width: 100%;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
-    }
+    
+        a {
+          display: block;
+          padding: 10px;
+          text-decoration: none;
+          color: #FFF;
+          text-align: center;
+          font-family: "Space Mono";
+          font-size: 2.75rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-transform: uppercase;
+          margin-bottom: 1.12rem;
+    
+          &:hover {
+            background-color: #f1f1f1;
+          }
+        }
+      }
 
     .menu-header {
         background: #E00000;
         height: 45.75rem;
         padding-top: 18.19rem;
     }
-
-    .burger-menu a {
-        display: block;
-        padding: 10px;
-        text-decoration: none;
-        color: #FFF;
-        text-align: center;
-        font-family: "Space Mono";
-        font-size: 2.75rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        text-transform: uppercase;
-        margin-bottom: 1.12rem;
-    }
-
-    .burger-menu a:hover {
-        background-color: #f1f1f1;
-    }
-
+ 
     /*filtres*/
     .filters-container select {
         width: 550px;

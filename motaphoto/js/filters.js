@@ -1,3 +1,11 @@
+$(document).ready(function() {
+  // Synchronisation des filtres select et div
+  $('.filter').on('click', function() {
+      var value = $(this).data('value');
+      var id = $(this).parent().attr('id').replace('filter-', ''); // Récupérer l'ID du filtre
+      $('#' + id).val(value).trigger('change'); // Mettre à jour le select correspondant
+  });
+});
 
 // Fonction pour afficher les images
 function displayImages(images) {

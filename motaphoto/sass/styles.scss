@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import 'modale';
-@import 'galerie';
-@import 'acceuil';
+@import 'accueil';
 @import 'single';
 @import 'lightbox';
 @import 'filters';
@@ -45,9 +44,7 @@ body{
     text-decoration: none;
 }
 
-.lightbox-trigger {
-    pointer-events: auto; /* Rend le lien de l'icône cliquable */
-}
+
 .thumbnail-image {
     transition: transform 0.3s ease;
 }
@@ -60,8 +57,5 @@ body{
 .image-container:hover .thumbnail-image:active {
     transform: scale(1.1) translate(-10%, -10%); /* Déplacer l'image au clic de la souris */
 }
-/* Ajouter une opacité au fond de la lightbox */
-.fancybox-bg {
-    background: rgba(0, 0, 0, 0.8) !important; /* Opacité de 80% (0.8) */
-}
+
 

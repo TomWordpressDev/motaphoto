@@ -196,6 +196,9 @@ jQuery(document).ready(function($) {
             },
             // Modèles de boutons
             btnTpl: {
+                close: '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
+                   '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/lightbox_close.png'; ?>" alt="Fermer">' +
+                   '</button>',
                 arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
                 '<div class="container-precedentes">'+
                     '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/fleche_gauche.png'; ?>" alt="flèche gauche">' +
@@ -312,13 +315,5 @@ jQuery(document).ready(function($) {
 
 </script>
 
-<script>
-// Synchronisation des filtres select et div
-$('.filter').on('click', function() {
-    var value = $(this).data('value');
-    var id = $(this).parent().attr('id').replace('filter-', ''); // Récupérer l'ID du filtre
-    $('#' + id).val(value).trigger('change'); // Mettre à jour le select correspondant
-});
 
-</script>
 

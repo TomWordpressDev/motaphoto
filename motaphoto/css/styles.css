@@ -29,6 +29,26 @@
   border: 5px solid #000;
   background: #FFF;
 }
+.modal-content form {
+  margin-top: 10.62rem;
+  margin-left: 10.31rem;
+}
+.modal-content label {
+  color: #313144;
+  font-family: Poppins;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+.modal-content input {
+  width: 16.4375rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #B8BBC2;
+  background: #FFF;
+}
 
 /* Bouton de fermeture */
 .close {
@@ -40,45 +60,10 @@
   font-weight: bold;
   cursor: pointer;
 }
-
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
-}
-
-/* Formulaire */
-.modal-content form {
-  margin-top: 10.62rem;
-  margin-left: 10.31rem;
-}
-
-.modal-content label {
-  color: #313144;
-  font-family: Poppins;
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: uppercase;
-}
-
-.modal-content input {
-  width: 16.4375rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #B8BBC2;
-  background: #FFF;
-}
-
-.modal-content textarea {
-  width: 16.4375rem;
-  height: 13.125rem;
-  border-radius: 0.5rem;
-  border: 1px solid #B8BBC2;
-  background: #FFF;
-  resize: none;
 }
 
 .wpcf7-form-control.wpcf7-submit.has-spinner {
@@ -132,8 +117,7 @@
     line-height: normal;
   }
   .modal-content input {
-    width: 80%; /* Spécifiez la largeur souhaitée */
-    /* Autres styles... */
+    width: 80%;
     justify-content: center;
   }
   .modal-content textarea {
@@ -151,7 +135,6 @@
   width: 100%;
   position: relative;
 }
-
 .hero-header img {
   height: 60.125rem;
   object-fit: cover;
@@ -164,16 +147,15 @@
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 80% !important; /* Modifier selon votre besoin */
-  height: 8.875rem !important; /* Modifier selon votre besoin */
+  width: 80% !important;
+  height: 8.875rem !important;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Deux colonnes de largeur égale */
-  gap: 1.25rem; /* Espacement entre les éléments */
-  margin-left: auto; /* Centrer la grille horizontalement */
-  margin-right: auto; /* Centrer la grille horizontalement */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
   margin-right: 9.12rem;
@@ -181,27 +163,69 @@
 }
 
 .item {
-  box-sizing: border-box; /* Pour inclure la marge dans la largeur */
-  width: auto;
-  height: 40.9375rem;
-  position: relative; /* Pour positionner l'élément */
-  overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+  position: relative;
+  display: inline-block;
 }
 
+.item .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Couleur de fond semi-transparente */
+  opacity: 0; /* Invisible par défaut */
+  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  box-sizing: border-box;
+  width: auto;
+  height: 40.9375rem;
+  position: relative;
+  overflow: hidden;
+}
 .item img {
-  width: 100%; /* Pour remplir complètement l'espace de l'élément */
-  height: 100%; /* Pour remplir complètement l'espace de l'élément */
-  object-fit: cover; /* Pour garder les proportions de l'image sans la déformer */
-  position: absolute; /* Pour positionner l'image */
-  top: 0; /* Positionner l'image en haut */
-  left: 0; /* Positionner l'image à gauche */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .annee {
   display: none;
 }
 
-/*Bouton "Charger plus */
+.info-thumbnail {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0.75rem;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.info-thumbnail div {
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 0.975rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.full-view {
+  position: absolute;
+  top: 0.69rem;
+  right: 1.12rem;
+}
+
 #load-more {
   display: flex;
   width: 17rem;
@@ -210,10 +234,10 @@
   justify-content: center;
   align-items: center;
   gap: 0.625rem;
-  margin-top: 2.5rem !important; /* Espacement supplémentaire vers le haut */
+  margin-top: 2.5rem !important;
   margin-bottom: 2.5rem !important;
-  display: block; /* Assurez-vous que le bouton est affiché en tant que bloc pour qu'il occupe tout l'espace disponible horizontalement */
-  margin: 20px auto; /* Marge supérieure et inférieure de 20px, et marges gauche et droite automatiques pour centrer horizontalement */
+  display: block;
+  margin: 20px auto;
   border: none;
   border-radius: 0.125rem;
   background: #D8D8D8;
@@ -226,7 +250,6 @@
   line-height: normal;
   cursor: pointer;
 }
-
 #load-more:hover {
   background: #000;
   color: #FFFFFF;
@@ -243,7 +266,7 @@
   }
   .grid {
     margin-top: 20px;
-    grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+    grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     align-items: center;
     margin-right: 1.81rem;
@@ -251,17 +274,16 @@
   }
   .item {
     display: flex;
-    box-sizing: border-box; /* Pour inclure la marge dans la largeur */
-    width: auto;
-    height: 35rem;
+    box-sizing: border-box;
     width: 100%;
-    position: relative; /* Pour positionner l'élément */
-    overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+    height: 35rem;
+    position: relative;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
   }
   .header-title {
-    height: 4.875rem !important; /* Modifier selon votre besoin */
+    height: 4.875rem !important;
   }
 }
 @media screen and (max-width: 375px) {
@@ -275,7 +297,7 @@
   }
   .grid {
     margin-top: 20px;
-    grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
+    grid-template-columns: repeat(1, 1fr);
     justify-content: center;
     align-items: center;
     margin-right: 1.81rem;
@@ -283,17 +305,16 @@
   }
   .item {
     display: flex;
-    box-sizing: border-box; /* Pour inclure la marge dans la largeur */
-    width: auto;
-    height: 15rem;
+    box-sizing: border-box;
     width: 100%;
-    position: relative; /* Pour positionner l'élément */
-    overflow: hidden; /* Pour cacher les parties des images qui dépassent de la boîte */
+    height: 15rem;
+    position: relative;
+    overflow: hidden;
     justify-content: center;
     align-items: center;
   }
   .header-title {
-    height: 1.875rem !important; /* Modifier selon votre besoin */
+    height: 1.875rem !important;
   }
 }
 .single-content {
@@ -434,6 +455,10 @@
   margin-bottom: 10px;
 }
 
+.container-arrow img {
+  cursor: pointer;
+}
+
 .container-question {
   display: flex;
   flex-wrap: wrap;
@@ -461,7 +486,14 @@
   }
   .container-question p {
     text-align: left;
-    width: 100%;
+    padding-left: 48px;
+  }
+  #openModalButton {
+    margin-left: 120px;
+  }
+  h3 {
+    text-align: center;
+    justify-content: center;
   }
   .grid-single {
     grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
@@ -478,6 +510,7 @@
     margin-right: -40% !important;
     margin-left: -40% !important;
     border-top: 1px solid black;
+    max-width: 812px;
   }
   .grid-single .item {
     height: 25rem;
@@ -513,6 +546,7 @@
   .container-question p {
     text-align: left;
     width: 100%;
+    padding-left: 12px;
   }
   .grid-single {
     grid-template-columns: repeat(1, 1fr); /* Une colonne à pleine largeur */
@@ -527,9 +561,11 @@
     width: 100%;
   }
   .section-contact {
-    margin-right: -40% !important;
-    margin-left: -40% !important;
     border-top: 1px solid black;
+    max-width: 420px;
+  }
+  #openModalButton {
+    margin-left: 5px;
   }
   .grid-single .item {
     height: 15rem;
@@ -548,26 +584,11 @@
     line-height: 3rem;
     text-transform: uppercase;
   }
+  h3 {
+    text-align: center;
+    justify-content: center;
+  }
 }
-.item {
-  position: relative;
-  display: inline-block;
-}
-
-.item .image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Couleur de fond semi-transparente */
-  opacity: 0; /* Invisible par défaut */
-  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .container-caption {
   display: flex;
   flex-direction: row;
@@ -575,7 +596,6 @@
   margin-left: 22%;
   margin-right: 22%;
 }
-
 .container-caption div {
   color: #FFF;
   font-family: Poppins;
@@ -586,37 +606,11 @@
   text-transform: uppercase;
 }
 
-.info-thumbnail {
-  display: flex;
-  flex-direction: row;
-  position: absolute;
-  bottom: 0.75rem;
-  justify-content: space-between;
-  width: 95%;
-}
-
-.info-thumbnail div {
-  color: #FFF;
-  font-family: Poppins;
-  font-size: 0.975rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  text-transform: uppercase;
-}
-
-.full-view {
-  position: absolute;
-  top: 0.69rem;
-  right: 1.12rem;
-}
-
 .container-suivantes {
   display: flex;
   flex-direction: row;
   margin-left: -80px !important;
 }
-
 .container-suivantes span {
   margin-right: 15px;
   margin-top: 3px;
@@ -627,7 +621,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
 .container-suivantes span:hover {
   color: #FFF;
   font-family: "Space Mono";
@@ -636,12 +629,22 @@
   font-weight: 700;
   line-height: normal;
 }
+.container-suivantes:hover span {
+  color: #FFF;
+  font-family: "Space Mono";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.container-suivantes:hover img {
+  min-width: 35px;
+}
 
 .container-precedentes {
   display: flex;
   flex-direction: row;
 }
-
 .container-precedentes span {
   margin-left: 15px;
   margin-top: 3px;
@@ -652,7 +655,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
 .container-precedentes span:hover {
   color: #FFF;
   font-family: "Space Mono";
@@ -661,38 +663,23 @@
   font-weight: 700;
   line-height: normal;
 }
+.container-precedentes:hover span {
+  color: #FFF;
+  font-family: "Space Mono";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.container-precedentes:hover img {
+  min-width: 35px;
+}
 
 .fancybox-button {
   background: none !important;
 }
 
-@media screen and (max-width: 678px) {
-  .container-caption {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0;
-  }
-  .container-suivantes {
-    display: none;
-  }
-  .container-suivantes span {
-    display: none;
-  }
-  .container-suivantes span:hover {
-    display: none;
-  }
-  .container-precedentes {
-    display: none !important;
-  }
-  .container-precedentes span {
-    display: none;
-  }
-  .container-precedentes span:hover {
-    display: none;
-  }
-}
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 768px) {
   .container-caption {
     display: flex;
     flex-direction: row;
@@ -868,6 +855,14 @@
   position: relative;
 }
 
+.logo {
+  position: absolute;
+  width: 216px;
+  height: 14px;
+  top: 1.94rem;
+  left: 146px;
+}
+
 #menu-primary-menu {
   display: flex;
   flex-direction: row;
@@ -879,7 +874,6 @@
   align-items: center;
   top: 10px;
 }
-
 #menu-primary-menu a {
   color: #000;
   font-family: "Space Mono";
@@ -890,23 +884,8 @@
   text-transform: uppercase;
   text-decoration: none;
 }
-
 #menu-primary-menu a:hover {
-  color: #000;
-  font-family: "Space Mono";
-  font-size: 1rem;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
-  text-transform: uppercase;
-}
-
-.logo {
-  position: absolute;
-  width: 216px;
-  height: 14px;
-  top: 1.94rem;
-  left: 146px;
 }
 
 /* CSS pour le menu burger */
@@ -928,10 +907,35 @@
   background-color: #E00000 !important;
 }
 
+.header-open-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff; /* Vous pouvez ajuster la couleur de fond selon vos préférences */
+  z-index: 9999;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.8s ease-in-out;
+}
+
+.header-open-menu.open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.close-icon {
+  position: absolute;
+  top: 40px;
+  right: 20px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 375px) {
   .menu-header {
     background: #E00000;
-    height: 30rem !important;
+    height: 28rem !important;
     padding-top: 10.19rem !important;
   }
 }
@@ -940,28 +944,23 @@
     margin-left: -80px; /* Ajustez la valeur selon votre mise en page */
   }
   .menu-toggle {
-    display: block; /* Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px */
+    display: block;
   }
   .menu-toggle i {
-    font-size: 1.71344rem; /* Ajustez la taille selon vos préférences */
+    font-size: 1.71344rem;
   }
   #menu-primary-menu {
     display: none; /* Masquer le menu principal lorsque la largeur de l'écran est inférieure à 768px */
   }
   .burger-menu {
-    display: block; /* Afficher le menu burger lorsque la largeur de l'écran est inférieure à 768px */
+    display: block;
     position: absolute;
-    top: 60px; /* Ajustez la position verticale selon votre mise en page */
+    top: 60px;
     left: 0;
     background-color: #ffffff;
     width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-  }
-  .menu-header {
-    background: #E00000;
-    height: 45.75rem;
-    padding-top: 18.19rem;
   }
   .burger-menu a {
     display: block;
@@ -979,6 +978,11 @@
   }
   .burger-menu a:hover {
     background-color: #f1f1f1;
+  }
+  .menu-header {
+    background: #E00000;
+    height: 45.75rem;
+    padding-top: 18.19rem;
   }
   /*filtres*/
   .filters-container select {
@@ -1083,10 +1087,6 @@ body {
   text-decoration: none;
 }
 
-.lightbox-trigger {
-  pointer-events: auto; /* Rend le lien de l'icône cliquable */
-}
-
 .thumbnail-image {
   transition: transform 0.3s ease;
 }
@@ -1098,11 +1098,6 @@ body {
 
 .image-container:hover .thumbnail-image:active {
   transform: scale(1.1) translate(-10%, -10%); /* Déplacer l'image au clic de la souris */
-}
-
-/* Ajouter une opacité au fond de la lightbox */
-.fancybox-bg {
-  background: rgba(0, 0, 0, 0.8) !important; /* Opacité de 80% (0.8) */
 }
 
 /*# sourceMappingURL=styles.css.map */

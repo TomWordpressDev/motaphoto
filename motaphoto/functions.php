@@ -2,13 +2,18 @@
 function custom_theme_enqueue_scripts() {
     // Ajout du style du thème parent
     wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
+  
+    wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css');
+    wp_enqueue_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js', array('jquery'), null, true);
+    wp_enqueue_style('fancybox-css', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css');
+    wp_enqueue_script('fancybox-js', 'https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js', array('jquery'), null, true);
 
-    // Ajout du style personnalisé généré à partir de Sass, dépendant du style du thème parent
     wp_enqueue_style('custom-style', get_template_directory_uri() . '/css/styles.css', array('parent-style'), '1.0.0', 'all');
-
+    wp_enqueue_script('menus', get_template_directory_uri() . '/js/menus.js', array('jquery'), '1.0.0', true);
     wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/custom-script.js', array('jquery'), '1.0.0', true);
     wp_enqueue_script('modale', get_template_directory_uri() . '/js/modale.js', array('jquery'), '1.0.0', true);
     wp_enqueue_script('filters', get_template_directory_uri() . '/js/filters.js', array('jquery'), '1.0.0', true);
+    wp_enqueue_script('slider', get_template_directory_uri() . '/js/slider.js', array('jquery'), 'null', true);
 
 }
 add_action('wp_enqueue_scripts', 'custom_theme_enqueue_scripts');

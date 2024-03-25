@@ -1,5 +1,5 @@
 <script>
-    $(document).ready(function() {
+       $(document).ready(function() {
     $('.full-view').fancybox({
         // General Options
         closeExisting: false,   // Close all existing fancybox instances when opening a new one
@@ -29,6 +29,9 @@
 
        
         btnTpl: {
+            close: '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
+                   '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/lightbox_close.png'; ?>" alt="Fermer">' +
+                   '</button>',
             arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
             '<div class="container-precedentes">'+
                 '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/fleche_gauche.png'; ?>" alt="flèche gauche">' +
@@ -36,12 +39,11 @@
             '</div>'+
                 '</button>',
             arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
-            '<div class="container-suivantes">'+
-            
-                        '<span class="custom-span">Suivantes</span>' +
-                   '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/fleche_droite.png'; ?>" alt="flèche droite">' +     
-                        '</div>'+
-                        '</button>',
+            '<div class="container-suivantes">'+            
+                '<span class="custom-span">Suivantes</span>' +
+                '<img src="<?php echo get_stylesheet_directory_uri() . '/assets/fleche_droite.png'; ?>" alt="flèche droite">' +     
+            '</div>'+
+                '</button>',
         },
 
         // Image Options
@@ -60,4 +62,5 @@
         hash: false              // Enable URL hash navigation
     });
 });
+
 </script>
