@@ -23,7 +23,7 @@
             </div>
             <ul id="menu-primary-menu" class="primary-menu">
                 <?php    
-                    // Utilisation d'un menu déroulant simulant un menu burger
+                  
                     $menu_items = wp_get_nav_menu_items('primary-menu');
                     if ($menu_items) {
                         foreach ($menu_items as $item) {

@@ -8,19 +8,17 @@
     flex: row;    
     justify-content: space-between;
     gap: 1.31rem;
+    height: inherit;
 }
 .detail-photo{
     position: relative;
     border-bottom: 1px solid black;
-    width: 50%;
-   
+    width: 50%;   
 }
 .d-photo{
-
     position: absolute;
     bottom: 20px;
     width: 50%;
- 
 }
 .detail-photo p, strong{
     color: #000;

@@ -49,6 +49,14 @@
       border: 1px solid #B8BBC2;
       background: #FFF;
     }
+    textarea{
+        width: 16.4375rem;
+        height: 13.125rem;
+        border-radius: 0.5rem;
+        border: 1px solid #B8BBC2;
+        background: #FFF;
+        resize: none;
+    }
 }
 /* Bouton de fermeture */
 .close {

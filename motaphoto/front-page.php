@@ -51,8 +51,8 @@ $formats = get_terms('format');
 
             <div class="filters" id="filter-annee">
                 <div class="filter" data-value=""></div>
-                <div class="filter" data-value="asc">A partir des plus anciennes</div>
-                <div class="filter" data-value="desc">A partir des plus récentes</div>
+                <div class="filter" data-value="asc">À partir des plus anciennes</div>
+                <div class="filter" data-value="desc">À partir des plus récentes</div>
             </div>
         </div>
         </div>
@@ -79,8 +79,8 @@ $formats = get_terms('format');
                 <div class="filters">          
                     <select id="annee" class="filter">
                         <option value="">TRIER PAR</option>
-                        <option value="asc">A partir des plus anciennes</option>
-                        <option value="desc">A partir des plus récentes</option>
+                        <option value="asc">À partir des plus anciennes</option>
+                        <option value="desc">À partir des plus récentes</option>
                     </select>
                 </div>
             </div>
