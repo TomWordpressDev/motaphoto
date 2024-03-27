@@ -17,7 +17,7 @@
                         <section class="detail">
                             <div class="detail-photo">
                                 <div class="d-photo">
-                            <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+                            <?php the_title('<h2 class="entry-title">', '</h2>'); ?>
                                 <?php
                                 // Afficher la référence
                                 $fields = get_fields();

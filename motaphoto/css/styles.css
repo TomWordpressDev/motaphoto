@@ -197,6 +197,29 @@
   left: 0;
 }
 
+.item:hover .image-overlay {
+  opacity: 1; /* Visible au survol */
+}
+
+.item .image-overlay a {
+  color: white; /* Couleur de l'icône */
+  font-size: 40px; /* Taille de l'icône */
+  text-decoration: none;
+}
+
+.thumbnail-image {
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover .thumbnail-image {
+  transform: scale(1.1); /* Agrandir l'image */
+  cursor: move; /* Changer le curseur pour indiquer qu'il peut déplacer l'image */
+}
+
+.image-container:hover .thumbnail-image:active {
+  transform: scale(1.1) translate(-10%, -10%); /* Déplacer l'image au clic de la souris */
+}
+
 .annee {
   display: none;
 }
@@ -1061,6 +1084,16 @@ h1 {
   padding: 0;
 }
 
+h2 {
+  color: #000;
+  font-family: "Space Mono";
+  font-size: 4.125rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 3.625rem;
+  text-transform: uppercase;
+}
+
 h3 {
   color: #000;
   font-family: "Space Mono";
@@ -1075,29 +1108,6 @@ h3 {
 body {
   margin: auto;
   width: 100%;
-}
-
-.item:hover .image-overlay {
-  opacity: 1; /* Visible au survol */
-}
-
-.item .image-overlay a {
-  color: white; /* Couleur de l'icône */
-  font-size: 40px; /* Taille de l'icône */
-  text-decoration: none;
-}
-
-.thumbnail-image {
-  transition: transform 0.3s ease;
-}
-
-.image-container:hover .thumbnail-image {
-  transform: scale(1.1); /* Agrandir l'image */
-  cursor: move; /* Changer le curseur pour indiquer qu'il peut déplacer l'image */
-}
-
-.image-container:hover .thumbnail-image:active {
-  transform: scale(1.1) translate(-10%, -10%); /* Déplacer l'image au clic de la souris */
 }
 
 /*# sourceMappingURL=styles.css.map */
