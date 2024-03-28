@@ -49,6 +49,18 @@
   border: 1px solid #B8BBC2;
   background: #FFF;
 }
+.modal-content textarea {
+  width: 16.4375rem;
+  height: 13.125rem;
+  border-radius: 0.5rem;
+  border: 1px solid #B8BBC2;
+  background: #FFF;
+  resize: none;
+}
+
+.wpcf7-response-output {
+  display: none;
+}
 
 /* Bouton de fermeture */
 .close {
